@@ -1,1 +1,43 @@
-<p>tour-order works!</p>
+<section>
+
+  <section class="pl-[105px]">
+    <div class="flex items-center justify-center bg-[#031d34f5] h-[50px]">
+      <h3 class="text-xl font-bold">18 August 2025</h3>
+    </div>
+
+    <main class="flex items-center bg-[#031d34f5] h-[50px] border-t-[1px]">
+      <div class="h-full" *ngFor="let hour of hours">
+        <div class="h-full flex items-center justify-center w-[200px] border-r-[1px]">
+          <h4>{{hour}}:00</h4>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <section>
+    <main class=>
+      <div class="flex" *ngFor="let lkw of lkws">
+        <div class="w-[105px] flex items-center justify-center flex-col h-[180px] bg-[#031d34f5] border-b-[1px]">
+          <h4>{{lkw}}</h4>
+          <h4>(Kranfahrzeug)</h4>
+        </div>
+
+          <div *ngFor="let hour of hours"
+         class="bg-[#00ffbb] w-[200px] h-[180px] border-b  flex items-center justify-center">
+      <!-- Hier kann man Touren oder Drag & Drop Boxen einfügen -->
+    </div>
+
+
+      </div>
+    </main>
+
+    <main>
+      <div class="h-[180px bg-[#d81a30]">
+
+
+
+      </div>
+    </main>
+  </section>
+
+</section>
