@@ -2,3 +2,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+    width: 100vw;
+    display: flex;
+    margin: 0;
+    justify-content: center;
+
+
+@media (max-width: 1800px) {
+  justify-content: start;
+}
+
+}

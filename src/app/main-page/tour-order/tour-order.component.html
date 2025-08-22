@@ -1,43 +1,39 @@
-<section>
-
-  <section class="pl-[105px]">
+<section class="w-full" >
+  <!-- Datum -->
+  <div class="pl-[105px]">
     <div class="flex items-center justify-center bg-[#031d34f5] h-[50px]">
       <h3 class="text-xl font-bold">18 August 2025</h3>
     </div>
+  </div>
 
-    <main class="flex items-center bg-[#031d34f5] h-[50px] border-t-[1px]">
-      <div class="h-full" *ngFor="let hour of hours">
-        <div class="h-full flex items-center justify-center w-[200px] border-r-[1px]">
-          <h4>{{hour}}:00</h4>
-        </div>
+  <!-- Stunden-Zeile -->
+  <div class="flex">
+    <!-- Linke feste Spalte -->
+    <div class="w-[105px] bg-[#031d34f5] h-[50px] border-r border-t"></div>
+
+    <!-- Rechte scrollbare Spalte -->
+    <div class="flex  flex-nowrap bg-[#031d34f5] h-[50px] border-t">
+      <div *ngFor="let hour of hours"
+           class="w-[200px] h-full flex items-center justify-center border-r shrink-0">
+        <h4>{{hour}}:00</h4>
       </div>
-    </main>
-  </section>
+    </div>
+  </div>
 
-  <section>
-    <main class=>
-      <div class="flex" *ngFor="let lkw of lkws">
-        <div class="w-[105px] flex items-center justify-center flex-col h-[180px] bg-[#031d34f5] border-b-[1px]">
-          <h4>{{lkw}}</h4>
-          <h4>(Kranfahrzeug)</h4>
-        </div>
-
-          <div *ngFor="let hour of hours"
-         class="bg-[#00ffbb] w-[200px] h-[180px] border-b  flex items-center justify-center">
-      <!-- Hier kann man Touren oder Drag & Drop Boxen einfügen -->
+  <!-- LKW-Zeilen -->
+  <div *ngFor="let lkw of lkws" class="flex">
+    <!-- Linke feste LKW-Spalte -->
+    <div class="w-[105px] flex items-center justify-center flex-col h-[180px] bg-[#031d34f5] border-b shrink-0">
+      <h4>{{lkw}}</h4>
+      <h4>(Kranfahrzeug)</h4>
     </div>
 
-
+    <!-- Rechte scrollbare Stunden-Spalte -->
+    <div class="flex  flex-nowrap">
+      <div *ngFor="let hour of hours"
+           class="bg-[#00ffbb] w-[200px] h-[180px] border-b flex items-center justify-center shrink-0">
+        <!-- Hier Touren / Drag & Drop -->
       </div>
-    </main>
-
-    <main>
-      <div class="h-[180px bg-[#d81a30]">
-
-
-
-      </div>
-    </main>
-  </section>
-
+    </div>
+  </div>
 </section>
