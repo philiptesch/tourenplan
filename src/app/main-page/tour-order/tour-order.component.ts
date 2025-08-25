@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Timeslot } from '../../services/timeslot_model';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { TourPackageComponent } from './tour-package/tour-package.component';
 
 
 @Component({
   selector: 'app-tour-order',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DragDropModule, TourPackageComponent],
   templateUrl: './tour-order.component.html',
   styleUrl: './tour-order.component.scss'
 })

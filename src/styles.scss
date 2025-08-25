@@ -16,3 +16,18 @@ body {
 }
 
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-mdc-dialog-container .mdc-dialog__container {
+    position: absolute !important;
+    top: 40px !important;
+    left: 40% !important;
+    height: 330px !important;
+    width: 400px !important;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 5%;
+  background: linear-gradient(145deg, #0c2de3, #3049f0);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
