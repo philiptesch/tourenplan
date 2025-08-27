@@ -1,1 +1,57 @@
-<p>add-new-package works!</p>
+<section>
+  <h1 class="text-center text-2xl mb-[20px]">neue Tour anlegen</h1>
+
+  <div>
+    <form class="flex pl-[100px] justify-center flex-col gap-[30px]"(ngSubmit)="createTour($event)" >
+
+      <!-- Uhrzeit -->
+      <div>
+        <label for="time">Welche Uhrzeit?</label>
+        <div>
+          <input [(ngModel)]="time" class="mt-[10px]" type="time" name="time" min="08:00" max="16:00" required>
+        </div>
+      </div>   
+
+      <!-- Tour Auswahl -->
+      <div>
+        <label  for="tourcode">Welche Tour?</label>
+        <div>
+          <select [(ngModel)]="tourcode" class="mt-[10px]" name="tourcode" id="tourcode" required>
+            <option value="" disabled>Bitte wählen</option>
+            <option value="1">Tour 1</option>
+            <option value="2">Tour 2</option>
+            <option value="3">Tour 3</option>
+            <option value="4">Tour 4</option>
+            <option value="5">Tour 5</option>
+            <option value="6">Tour 6</option>
+            <option value="7">Tour 7</option>
+            <option value="8">Tour 8</option>
+            <option value="9">Tour 9</option>
+            <option value="10">Tour 10</option>
+            <option value="11">Tour 11</option>
+            <option value="12">Tour 12</option>
+            <option value="13">Tour 13</option>
+            <option value="14">Tour 14</option>
+            <option value="15">Tour 15</option>
+            <option value="16">Tour 16</option>
+            <option value="17">Tour 17</option>
+            <option value="18">Tour 18</option>
+            <option value="19">Tour 19</option>
+            <option value="20">Tour 20</option>
+          </select>
+        </div>
+      </div>   
+
+      <!-- Artikel -->
+      <div>
+        <label for="article">Welche Artikel?</label>
+        <div>
+          <input  [(ngModel)]="article" class="mt-[10px]" type="text" name="article" required>
+        </div>
+      </div>   
+
+      <button class="flex w-[100px] p-[10px] rounded-[30px] bg-[#00ffbb]"> Tour erstellen</button>
+
+    </form>
+  </div>
+</section>
