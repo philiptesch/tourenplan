@@ -1,5 +1,5 @@
 <main>
-<app-tour-package></app-tour-package>
+<app-tour-package  (tourCreated)="onTourCreated($event)"></app-tour-package>
 
 
 <section class="w-full" >
@@ -37,6 +37,9 @@
       <div *ngFor="let hour of hours"
            class="bg-[#00ffbb] w-[200px] h-[180px] border-b flex items-center justify-center shrink-0">
         <!-- Hier Touren / Drag & Drop -->
+         <ng-container *ngFor="let tour of showNewTour(lkw, hour)">
+         <app-package  [article]="tour.article" [time]="tour.time"class="w-full h-full border border-white border-solid"></app-package>
+         </ng-container>
       </div>
     </div>
   </div>
