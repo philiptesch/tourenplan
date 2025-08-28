@@ -1,45 +1,70 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Timeslot } from '../../services/timeslot_model';
-import { DragDropModule } from '@angular/cdk/drag-drop';
+import { DragDropModule, transferArrayItem, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { TourPackageComponent } from './tour-package/tour-package.component';
 import { PackageComponent } from './package/package.component';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-tour-order',
   standalone: true,
-  imports: [CommonModule, DragDropModule, TourPackageComponent, PackageComponent],
+  imports: [CommonModule, DragDropModule, TourPackageComponent, PackageComponent, MatIconModule],
   templateUrl: './tour-order.component.html',
   styleUrl: './tour-order.component.scss'
 })
 export class TourOrderComponent {
-hours = [8, 9, 10, 11, 12, 13, 14, 15, 16];
-lkws = [1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12,13,14,16,17,18,19,20];
- newTour = {
-    time: '',
-    tourcode: '',
-    article: ''
-  };
+  hours = [8, 9, 10, 11, 12, 13, 14, 15, 16];
+  lkws = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20];
 
+  tours: Array<{ time: number; tourcode: number; article: string }> = [];
 
-  tours: Array<{time: number, tourcode: number, article: string}> = [];
+  // DropLists verbinden
+  allDropLists: string[] = [];
 
-onTourCreated(tour: {time: string, tourcode: number, article: string}) {
-  const hour = Number(tour.time.split(':')[0]);
-  const tourcodeNum = Number(tour.tourcode); // z.B. "13:00" -> 13
-  this.tours.push({ 
-    time: hour, 
-    tourcode: tourcodeNum, 
-    article: tour.article 
-  });
-  console.log("Neue Tour erstellt:", tour);
-  // Optional: direkt anzeigen oder vorbereiten
-}
-showNewTour(lkw: number, hour: number) {
-  return this.tours.filter(t => t.tourcode === lkw && t.time === hour);
-}
-  
+  ngOnInit() {
+    for (let lkw of this.lkws) {
+      for (let hour of this.hours) {
+        this.allDropLists.push(this.getDropListId(lkw, hour));
+        console.log('allDropLists',this.allDropLists);
+        
+      }
+    }
+  }
 
+  getDropListId(lkw: number, hour: number) {
+    
+    return `drop-${lkw}-${hour}`;
+  }
 
+  onTourCreated(tour: { time: string; tourcode: number; article: string }) {
+    const hour = Number(tour.time.split(':')[0]);
+    const tourcodeNum = Number(tour.tourcode);
+    this.tours.push({
+      time: hour,
+      tourcode: tourcodeNum,
+      article: tour.article
+    });
+  }
 
+  showNewTour(lkw: number, hour: number) {
+    return this.tours.filter(t => t.tourcode === lkw && t.time === hour);
+  }
+
+  drop(event: CdkDragDrop<any[]>, newLkw: number, newHour: number) {
+    if (event.previousContainer !== event.container) {
+      const tour = event.previousContainer.data[event.previousIndex];
+
+      // neue Position setzen
+      tour.tourcode = newLkw;
+      tour.time = newHour;
+
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+  }
 }

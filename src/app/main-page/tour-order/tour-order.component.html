@@ -1,47 +1,55 @@
 <main>
-<app-tour-package  (tourCreated)="onTourCreated($event)"></app-tour-package>
+  <app-tour-package (tourCreated)="onTourCreated($event)"></app-tour-package>
 
-
-<section class="w-full" >
-  <!-- Datum -->
-  <div class="pl-[105px]">
-    <div class="flex items-center justify-center bg-[#031d34f5] h-[50px]">
-      <h3 class="text-xl font-bold">18 August 2025</h3>
-    </div>
-  </div>
-
-  <!-- Stunden-Zeile -->
-  <div class="flex">
-    <!-- Linke feste Spalte -->
-    <div class="w-[105px] bg-[#031d34f5] h-[50px] border-r border-t"></div>
-
-    <!-- Rechte scrollbare Spalte -->
-    <div class="flex  flex-nowrap bg-[#031d34f5] h-[50px] border-t">
-      <div *ngFor="let hour of hours"
-           class="w-[200px] h-full flex items-center justify-center border-r shrink-0">
-        <h4>{{hour}}:00</h4>
+  <section class="w-full">
+    <!-- Datum -->
+    <div class="pl-[105px]">
+      <div class="flex items-center justify-center bg-[#031d34f5] h-[50px]">
+        <h3 class="text-xl font-bold">18 August 2025</h3>
       </div>
     </div>
-  </div>
 
-  <!-- LKW-Zeilen -->
-  <div *ngFor="let lkw of lkws" class="flex">
-    <!-- Linke feste LKW-Spalte -->
-    <div class="w-[105px] flex items-center justify-center flex-col h-[180px] bg-[#031d34f5] border-b shrink-0">
-      <h4>{{lkw}}</h4>
-      <h4>(Kranfahrzeug)</h4>
-    </div>
-
-    <!-- Rechte scrollbare Stunden-Spalte -->
-    <div class="flex  flex-nowrap">
-      <div *ngFor="let hour of hours"
-           class="bg-[#00ffbb] w-[200px] h-[180px] border-b flex items-center justify-center shrink-0">
-        <!-- Hier Touren / Drag & Drop -->
-         <ng-container *ngFor="let tour of showNewTour(lkw, hour)">
-         <app-package  [article]="tour.article" [time]="tour.time"class="w-full h-full border border-white border-solid"></app-package>
-         </ng-container>
+    <!-- Stunden-Zeile -->
+    <div class="flex">
+      <div class="w-[105px] bg-[#031d34f5] h-[50px] border-r border-t"></div>
+      <div class="flex flex-nowrap bg-[#031d34f5] h-[50px] border-t">
+        <div *ngFor="let hour of hours" class="w-[200px] h-full flex items-center justify-center border-r shrink-0">
+          <h4>{{hour}}:00</h4>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+
+    <!-- LKW-Zeilen -->
+    <div *ngFor="let lkw of lkws" class="flex">
+      <!-- Linke feste LKW-Spalte -->
+      <div class="w-[105px] flex items-center justify-center flex-col h-[180px] bg-[#031d34f5] border-b shrink-0">
+        <h4>{{lkw}}</h4>
+        <h4>(Kranfahrzeug)</h4>
+      </div>
+
+      <!-- Rechte scrollbare Stunden-Spalte -->
+      <div class="flex flex-nowrap">
+        <div *ngFor="let hour of hours"
+             cdkDropList
+             [id]="getDropListId(lkw, hour)"
+             [cdkDropListData]="showNewTour(lkw, hour)"
+             [cdkDropListConnectedTo]="allDropLists"
+             (cdkDropListDropped)="drop($event, lkw, hour)"
+             class="bg-[#00ffbb] w-[200px] h-[180px] border-b flex items-center justify-center shrink-0">
+
+          <!-- Pakete / Drag & Drop -->
+          <div *ngFor="let tour of showNewTour(lkw, hour)" cdkDrag class="w-full h-full">
+            <app-package
+              [article]="tour.article"
+              [time]="tour.time"
+              [tourcode]="tour.tourcode"
+              (newtourCreated)="onTourCreated($event)"
+              class="block w-full h-full border border-white border-solid">
+            </app-package>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
