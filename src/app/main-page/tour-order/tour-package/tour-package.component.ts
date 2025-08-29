@@ -14,7 +14,7 @@ import { AddNewPackageComponent } from './add-new-package/add-new-package.compon
 })
 export class TourPackageComponent {
   readonly dialog = inject(MatDialog);
-  @Output() tourCreated = new EventEmitter<{time: string, tourcode: number, article: string}>();
+  @Output() tourCreated = new EventEmitter<{time: string, tourcode: number, article: string, id:string, oldId:string}>();
 
 
 openDialog() {

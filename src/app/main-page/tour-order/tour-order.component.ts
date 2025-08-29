@@ -17,7 +17,7 @@ export class TourOrderComponent {
   hours = [8, 9, 10, 11, 12, 13, 14, 15, 16];
   lkws = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20];
 
-  tours: Array<{ time: number; tourcode: number; article: string }> = [];
+  tours: Array<{ time: number; tourcode: number; article: string, id:string }> = [];
 
   // DropLists verbinden
   allDropLists: string[] = [];
@@ -36,16 +36,30 @@ export class TourOrderComponent {
     
     return `drop-${lkw}-${hour}`;
   }
+onTourCreated(tour: { time: string; tourcode: number; article: string, id: string, oldId:string }) {
+  const hour = Number(tour.time.split(':')[0]);
+  const tourcodeNum = Number(tour.tourcode);
 
-  onTourCreated(tour: { time: string; tourcode: number; article: string }) {
-    const hour = Number(tour.time.split(':')[0]);
-    const tourcodeNum = Number(tour.tourcode);
+  const index = this.tours.findIndex(t => t.id === tour.oldId);
+
+  if (index !== -1) {
+    this.tours[index] = {
+      time: hour,
+      tourcode: tourcodeNum,
+      article: tour.article,
+      id: tour.id
+    };
+    console.log('Paket aktualisiert:', this.tours[index]);
+  } else {
     this.tours.push({
       time: hour,
       tourcode: tourcodeNum,
-      article: tour.article
+      article: tour.article,
+      id: tour.id
     });
+    console.log('Neues Paket hinzugefügt:', this.tours[this.tours.length-1]);
   }
+}
 
   showNewTour(lkw: number, hour: number) {
     return this.tours.filter(t => t.tourcode === lkw && t.time === hour);

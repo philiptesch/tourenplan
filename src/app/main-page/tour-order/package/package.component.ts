@@ -3,6 +3,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { SelectNewTourWindowComponent } from './select-new-tour-window/select-new-tour-window.component';
+import { log } from 'console';
 
 @Component({
   selector: 'app-package',
@@ -13,21 +14,29 @@ import { SelectNewTourWindowComponent } from './select-new-tour-window/select-ne
 })
 export class PackageComponent {
   @Input() article!: string;
-  @Input() time!: number;
+  @Input() time!: Number;
   @Input() tourcode!: number;
+  oldid! : string
   readonly dialog = inject(MatDialog);
-  @Output() newtourCreated = new EventEmitter<{time: string, tourcode: number, article: string}>();
+  @Output() newtourCreated = new EventEmitter<{time: string, tourcode: number, article: string,id:string, oldId:string}>();
 
   openDialog() {
+    this.oldid = this.getId();
     let dialogRef = this.dialog.open(SelectNewTourWindowComponent, {
-      data: { article: this.article, time: this.time, tourcode:this.tourcode }
+      data: { article: this.article, time: this.time, tourcode:this.tourcode, oldid: this.oldid   }
     });
 
     dialogRef.afterClosed().subscribe(result => {
     if (result) {
-      console.log('Neue Tour aus Dialog:', result);
+      console.log('neuererwer:', result);
       this.newtourCreated.emit(result)
     }
   });
+  }
+
+
+  getId() {
+    console.log(`drop-${this.tourcode}-${this.time}`);
+     return `drop-${this.tourcode}-${this.time}`
   }
 }
