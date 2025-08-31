@@ -26,7 +26,6 @@ export class TourOrderComponent {
     for (let lkw of this.lkws) {
       for (let hour of this.hours) {
         this.allDropLists.push(this.getDropListId(lkw, hour));
-        console.log('allDropLists',this.allDropLists);
         
       }
     }

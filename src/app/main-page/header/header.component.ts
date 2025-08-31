@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { FirestoreServiceService } from '../../services/firestore-service.service';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -8,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+
+
+constructor(private FirestoreService: FirestoreServiceService) {
+
+
+}
+
+  addJson() {
+    this.FirestoreService.addJsonToFirebase()
+  }
 
 }
