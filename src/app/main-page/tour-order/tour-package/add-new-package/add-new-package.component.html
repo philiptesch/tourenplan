@@ -41,12 +41,15 @@
           </select>
         </div>
       </div>   
-
       <!-- Artikel -->
       <div>
         <label for="article">Welche Artikel?</label>
         <div>
-          <input  [(ngModel)]="article" class="mt-[10px]" type="text" name="article" required>
+         <select [(ngModel)]="article" name="article" >
+    <option *ngFor="let article of allarticles || []" [ngValue]="article" [ngValue]="article">
+        {{ article.name }} ({{ article.weight }}kg)
+        </option>
+            </select>
         </div>
       </div>   
 

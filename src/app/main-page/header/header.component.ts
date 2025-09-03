@@ -15,8 +15,6 @@ constructor(private FirestoreService: FirestoreServiceService) {
 
 }
 
-  addJson() {
-    this.FirestoreService.addJsonToFirebase()
-  }
+
 
 }
