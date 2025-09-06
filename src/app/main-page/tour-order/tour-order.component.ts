@@ -4,8 +4,7 @@ import { DragDropModule, transferArrayItem, CdkDragDrop } from '@angular/cdk/dra
 import { TourPackageComponent } from './tour-package/tour-package.component';
 import { PackageComponent } from './package/package.component';
 import {MatIconModule} from '@angular/material/icon';
-
-
+import {Article} from '../../interfaces/article.interface'
 @Component({
   selector: 'app-tour-order',
   standalone: true,
@@ -16,6 +15,7 @@ import {MatIconModule} from '@angular/material/icon';
 export class TourOrderComponent {
   hours = [8, 9, 10, 11, 12, 13, 14, 15, 16];
   lkws = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20];
+  article!:Article
 
   tours: Array<{ time: number; tourcode: number; article: string, id:string }> = [];
 
@@ -35,10 +35,10 @@ export class TourOrderComponent {
     
     return `drop-${lkw}-${hour}`;
   }
-onTourCreated(tour: { time: string; tourcode: number; article: string, id: string, oldId:string }) {
+onTourCreated(tour: { time: string; tourcode: number; article: any, id: string, oldId:string }) {
   const hour = Number(tour.time.split(':')[0]);
   const tourcodeNum = Number(tour.tourcode);
-
+  this.article = tour.article
   const index = this.tours.findIndex(t => t.id === tour.oldId);
 
   if (index !== -1) {

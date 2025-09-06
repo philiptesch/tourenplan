@@ -40,7 +40,7 @@
           <!-- Pakete / Drag & Drop -->
           <div *ngFor="let tour of showNewTour(lkw, hour)" cdkDrag class="w-full h-full">
             <app-package
-              [article]="tour.article"
+              [article]="article"
               [time]="tour.time"
               [tourcode]="tour.tourcode"
               (newtourCreated)="onTourCreated($event)"

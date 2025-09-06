@@ -3,7 +3,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { SelectNewTourWindowComponent } from './select-new-tour-window/select-new-tour-window.component';
-import { log } from 'console';
+import {Article} from '../../../interfaces/article.interface'
 
 @Component({
   selector: 'app-package',
@@ -13,7 +13,7 @@ import { log } from 'console';
   styleUrl: './package.component.scss'
 })
 export class PackageComponent {
-  @Input() article!: string;
+  @Input() article!: Article;
   @Input() time!: Number;
   @Input() tourcode!: number;
   oldid! : string
