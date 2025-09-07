@@ -33,14 +33,14 @@ lkws = [1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12,13,14,16,17,18,19,20];
 
   ngOnInit(): void {
     this.firestoreService.articlesObersavble$.subscribe(articles => {
-    this.articleId = articles[0].Id;
-    this.allarticles = Object.entries(articles[0].articles).map(([key, value]) => ({
-  id: key,
-  ...(value as { name: string; weight: number; quantity: number })
-}));
+    this.allarticles = articles
     console.log('this.allarticles', this.allarticles);
-    
     });
+
+    this.firestoreService.articlesIdObersavble$.subscribe(id => {
+       this.articleId =id
+        console.log('this.allarticles', this.articleId);
+    })
     
   }
 
