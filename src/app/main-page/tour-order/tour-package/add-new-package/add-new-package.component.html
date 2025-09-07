@@ -44,15 +44,20 @@
       <!-- Artikel -->
       <div>
         <label for="article">Welche Artikel?</label>
+      <div>
         <div>
-         <select [(ngModel)]="article" name="article" >
-         <option value="" disabled>Bitte wählen</option>
-    <option *ngFor="let article of allarticles || []" [ngValue]="article" [ngValue]="article" multiple>
-        {{ article.name }} ({{ article.weight }}kg)
-        </option>
-            </select>
+         <input #input (keyup)="onInputChange($event)" [(ngModel)]="article" name="article" type="text" placeholder="Eingabe erforderlich" >
+        <div  *ngIf="input.value.length >=2" class="flex flex-col gap-[10px] mt-[5px] bg-white border-solid border-[5px] border-4
+ w-[61%] border-[#031d34f5] h-[250px] overflow-y-auto">  
+         <div [ngClass]="{'backgroundHover': isSelected(article)}" *ngFor="let article of checkAllArticle ">
+          <span  (click)="selectArticle(article)" class="cursor-pointer" >  {{ article.name }} ({{ article.weight }}kg)</span>
+        </div>
+      </div>  
         </div>
       </div>   
+    </div>
+    
+    
 
       <button class="flex w-[100px] p-[10px] rounded-[30px] bg-[#00ffbb]"> Tour erstellen</button>
 

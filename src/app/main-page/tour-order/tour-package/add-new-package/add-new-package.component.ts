@@ -3,6 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatDialogRef } from '@angular/material/dialog';
 import  {FirestoreServiceService} from '../../../../services/firestore-service.service'
+import { Article } from '../../../../interfaces/article.interface';
+import { ifError } from 'assert';
+import { log } from 'console';
 @Component({
   selector: 'app-add-new-package',
   standalone: true,
@@ -20,8 +23,10 @@ lkws = [1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12,13,14,16,17,18,19,20];
     tourcode: '',
     article: ''
   };
+  selcectArticles: Article[] = [];
     id! : string
-  allarticles: any[] = [];
+  allarticles: Article[] = [];
+  checkAllArticle: Article[] = [];
   articleId!:string
   constructor(private dialogRef: MatDialogRef<AddNewPackageComponent>, private firestoreService: FirestoreServiceService) {}
 
@@ -53,10 +58,41 @@ createTour(event: Event) {
     this.dialogRef.close({
       time: this.time,
       tourcode: this.tourcode,
-      article: this.article, 
+      article: this.selcectArticles, 
       id: this.id
     });
 
 }
+
+
+
+onInputChange(event:Event) {
+  const input = event.target as HTMLInputElement; // Typ-Casting
+  const value = input.value; // Wert des Inputs
+  console.log('Eingegebener Wert:', value);
+
+    if (value.length >= 2) {
+      this.checkAllArticle = this.allarticles.filter(art => art.name.toLocaleLowerCase().includes(value.toLocaleLowerCase()))
+      console.log('this.checkAllArticle',this.checkAllArticle);
+      
+    }
+
+}
+
+
+selectArticle(article: Article) {
+  const alreadySelected = this.selcectArticles.includes(article);
+  if (alreadySelected) {
+    this.selcectArticles = this.selcectArticles.filter(a => a !== article);
+  } else {
+    this.selcectArticles.push(article);
+  }
+
+}
+
+isSelected(article: Article) {
+  return this.selcectArticles.some(art => art == article)
+}
+
 
 }
