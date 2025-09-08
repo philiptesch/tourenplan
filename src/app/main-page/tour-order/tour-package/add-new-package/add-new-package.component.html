@@ -8,15 +8,20 @@
       <div>
         <label for="time">Welche Uhrzeit?</label>
         <div>
-          <input [(ngModel)]="time" class="mt-[10px]" type="time" name="time" min="08:00" max="16:00" required>
+          <input (input)="checkTimeInput()" #timeInput [(ngModel)]="time" class="mt-[10px]" type="time" name="time" min="08:00" max="16:00" required>
         </div>
+        <div class="h-[20px]">
+      <span *ngIf="showANotice" class="text-red-500 text-[14px]">
+        ⚠️: Bitte nur volle Stunden eingeben
+      </span>
+      </div>
       </div>   
 
       <!-- Tour Auswahl -->
       <div>
         <label  for="tourcode">Welche Tour?</label>
         <div>
-          <select [(ngModel)]="tourcode" class="mt-[10px]" name="tourcode" id="tourcode" required>
+          <select (input)="checkTourInput()" [(ngModel)]="tourcode" class="mt-[10px]" name="tourcode" id="tourcode" required>
             <option value="" disabled>Bitte wählen</option>
             <option value="1">Tour 1</option>
             <option value="2">Tour 2</option>
@@ -40,19 +45,27 @@
             <option value="20">Tour 20</option>
           </select>
         </div>
+          <span *ngIf="checkTour" class="text-red-500 text-[14px]">
+        ⚠️: Bitte eine Tour auswählen
+      </span>
       </div>   
       <!-- Artikel -->
       <div>
         <label for="article">Welche Artikel?</label>
       <div>
         <div>
-         <input #input (keyup)="onInputChange($event)" [(ngModel)]="article" name="article" type="text" placeholder="Eingabe erforderlich" >
+         <input #input  (keyup)="onInputChange($event)" [(ngModel)]="article" name="article" type="text" placeholder="Eingabe erforderlich" >
         <div  *ngIf="input.value.length >=2" class="flex flex-col gap-[10px] mt-[5px] bg-white border-solid border-[5px] border-4
  w-[61%] border-[#031d34f5] h-[250px] overflow-y-auto">  
          <div [ngClass]="{'backgroundHover': isSelected(article)}" *ngFor="let article of checkAllArticle ">
           <span  (click)="selectArticle(article)" class="cursor-pointer" >  {{ article.name }} ({{ article.weight }}kg)</span>
         </div>
       </div>  
+          <div class="h-[20px]">
+      <span *ngIf="showNoticeArticleIsMiss" class="text-red-500 text-[14px]">
+        ⚠️: Bitte Artikel eingeben
+      </span>
+      </div>
         </div>
       </div>   
     </div>

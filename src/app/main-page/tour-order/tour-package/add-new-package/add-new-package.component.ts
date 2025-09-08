@@ -28,6 +28,9 @@ lkws = [1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12,13,14,16,17,18,19,20];
   allarticles: Article[] = [];
   checkAllArticle: Article[] = [];
   articleId!:string
+  showANotice!:boolean
+  checkTour!:boolean
+  showNoticeArticleIsMiss!:boolean
   constructor(private dialogRef: MatDialogRef<AddNewPackageComponent>, private firestoreService: FirestoreServiceService) {}
 
 
@@ -51,8 +54,11 @@ lkws = [1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12,13,14,16,17,18,19,20];
   }
 
 createTour(event: Event) {
+  if (this.checkArticleInput()) {
+   
   this.id = this.getId();
-  console.log('this.arer', this.article ),
+
+  console.log('this.arer', this.article, this.time ),
   
   event.preventDefault();
     this.dialogRef.close({
@@ -61,10 +67,36 @@ createTour(event: Event) {
       article: this.selcectArticles, 
       id: this.id
     });
-
+  } else {
+  this.showNoticeArticleIsMiss = true
+  }
 }
 
 
+checkArticleInput() {
+
+if (this.selcectArticles.length == 0) {
+this.showNoticeArticleIsMiss = true
+return false
+}
+this.showNoticeArticleIsMiss = false
+return true
+}
+
+checkTimeInput() {
+let checkTime = this.time.split(':')
+  if (checkTime[1] !== "00") {
+    this.showANotice = true
+  } else
+    this.showANotice = false
+}
+
+checkTourInput() {
+  if (this.tourcode =="") {
+    this.checkTour = true
+  } else
+    this.checkTour = false
+}
 
 onInputChange(event:Event) {
   const input = event.target as HTMLInputElement; // Typ-Casting
