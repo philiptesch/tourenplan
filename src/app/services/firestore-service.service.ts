@@ -1,10 +1,11 @@
 import { Injectable, inject  } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { Firestore, collectionData, collection,addDoc, onSnapshot } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection,addDoc, onSnapshot, updateDoc } from '@angular/fire/firestore';
 import articles from '../services/article.json';
 import { BehaviorSubject, timestamp } from 'rxjs';
 import { Article } from '../interfaces/article.interface';
+import { Tour } from '../interfaces/tour.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,11 +15,15 @@ export class FirestoreServiceService {
     public articlesObersavble$ = this.articleSubject.asObservable();
     private articleIdSubject = new BehaviorSubject<string>('');
     public articlesIdObersavble$ = this.articleIdSubject.asObservable();
+    private tourSubject = new BehaviorSubject(<Tour[]>[]);
+    public tourObersavble$ = this.tourSubject.asObservable();
     newArray: any[] = []; 
     allarticles: any[] = [];
     articlesId!:string
+    tour: Tour[] = []
   constructor() {
     this.subList()
+    this.subListTouren()
    }
 
    getArticles() {
@@ -48,10 +53,42 @@ subList() {
   });
 }
 
+
+
+subListTouren() {
+  return onSnapshot(this.getTourRef(), (snapshot) => {
+      const tourArray: Tour[] = [];
+  
+    snapshot.forEach(element => {
+      tourArray.push(
+        element.data() as Tour);
+    }
+  );
+  this.tour = tourArray
+  this.tourSubject.next(this.tour);
+  console.log('tourArray', this.tour  );
+
+   });
+}
+
     getArticleRef() {
         return collection(this.firestore, 'articles');
     }
 
+
+    getTourRef() {
+       return collection(this.firestore, 'touren');
+    }
+
+async addTourInFireBase(tour: Tour) {
+  try {
+    const docRef = await addDoc(this.getTourRef(), tour);
+    await updateDoc(docRef, { firestoreId: docRef.id });
+    console.log("Tour gespeichert mit ID:", docRef.id);
+  } catch (error) {
+    console.error("Fehler beim Speichern der Tour:", error);
+  }
+}
 
 
 setArticleObject(obj: any) {

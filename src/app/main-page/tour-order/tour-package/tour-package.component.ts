@@ -5,6 +5,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { AddNewPackageComponent } from './add-new-package/add-new-package.component';
+import { FirestoreServiceService } from '../../../services/firestore-service.service';
 @Component({
   selector: 'app-tour-package',
   standalone: true,
@@ -16,6 +17,9 @@ export class TourPackageComponent {
   readonly dialog = inject(MatDialog);
   @Output() tourCreated = new EventEmitter<{time: string, tourcode: number, article: string, id:string, oldId:string}>();
 
+  constructor(private firstoreServie: FirestoreServiceService) {
+
+  }
 
 openDialog() {
   const dialogRef = this.dialog.open(AddNewPackageComponent);
@@ -24,6 +28,7 @@ openDialog() {
     if (result) {
       console.log('Neue Tour aus Dialog:', result);
       this.getNewPackage(result)
+      this.firstoreServie.addTourInFireBase(result)
     }
   });
 }

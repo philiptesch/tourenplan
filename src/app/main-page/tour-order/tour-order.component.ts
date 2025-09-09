@@ -5,6 +5,8 @@ import { TourPackageComponent } from './tour-package/tour-package.component';
 import { PackageComponent } from './package/package.component';
 import {MatIconModule} from '@angular/material/icon';
 import {Article} from '../../interfaces/article.interface'
+import { FirestoreServiceService } from '../../services/firestore-service.service';
+import { Tour } from '../../interfaces/tour.interface';
 @Component({
   selector: 'app-tour-order',
   standalone: true,
@@ -17,19 +19,45 @@ export class TourOrderComponent {
   lkws = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20];
   article!:Article
 
-  tours: Array<{ time: number; tourcode: number; article: string, id:string }> = [];
-
+  tours: Tour[] = []
+  touren: Tour[] = []
   // DropLists verbinden
   allDropLists: string[] = [];
 
-  ngOnInit() {
+
+  constructor(private firestoreService: FirestoreServiceService) {
+
+  }
+
+async  ngOnInit() {
+await  this.loadTourList();
+
     for (let lkw of this.lkws) {
       for (let hour of this.hours) {
         this.allDropLists.push(this.getDropListId(lkw, hour));
-        
       }
     }
   }
+
+
+loadTourList() {
+  this.firestoreService.tourObersavble$.subscribe(tours => {
+    this.touren = tours;
+    console.log('this.touren', this.touren);
+
+    for (let tour of this.touren) {
+      let time = String(tour.time)
+      this.onTourCreated({
+        tourcode: tour.tourcode,
+        time: time,
+        article: tour.article,
+        id: tour.id,
+        oldId: tour.id
+      });
+    }
+  });
+}
+
 
   getDropListId(lkw: number, hour: number) {
     
