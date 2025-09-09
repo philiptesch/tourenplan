@@ -1,9 +1,13 @@
-<section class="w-full h-full flex items-center justify-center flex-col bg-[#E91E63]">
-              <mat-icon (click)="openDialog()"   fontIcon="menu"></mat-icon>
-    <h4> Tour</h4>
+
+<div class="flex items-center gap-[15px]">
+<mat-icon class="cursor-pointer ml-[10px]" (click)="openDialog()"   fontIcon="menu"></mat-icon>
+<h4 class="w-[50%] text-center text-[30px]"> Tour</h4>
+</div>
+<section class="w-full mt-[5px] gap-[20px] h-full flex items-center justify-start flex-col bg-[#E91E63]">
+
   
-    <div>
-        <h6>Uhrzeit</h6>
+    <div class="flex items-center gap-[15px] mt-[12px]">
+        <h6>Uhrzeit:</h6>
         <time datetime=""> {{time}}:00</time>
 
     </div>
