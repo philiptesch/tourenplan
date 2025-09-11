@@ -15,7 +15,7 @@ import { FirestoreServiceService } from '../../../services/firestore-service.ser
 })
 export class TourPackageComponent {
   readonly dialog = inject(MatDialog);
-  @Output() tourCreated = new EventEmitter<{time: string, tourcode: number, article: string, id:string, oldId:string}>();
+  @Output() tourCreated = new EventEmitter<{time: string, tourcode: number, article: string, id:string, oldId:string, firestoreId:string}>();
 
   constructor(private firstoreServie: FirestoreServiceService) {
 

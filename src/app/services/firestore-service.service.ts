@@ -1,11 +1,12 @@
 import { Injectable, inject  } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { Firestore, collectionData, collection,addDoc, onSnapshot, updateDoc } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection,addDoc, onSnapshot, updateDoc, doc } from '@angular/fire/firestore';
 import articles from '../services/article.json';
 import { BehaviorSubject, timestamp } from 'rxjs';
 import { Article } from '../interfaces/article.interface';
 import { Tour } from '../interfaces/tour.interface';
+import { log } from 'node:console';
 @Injectable({
   providedIn: 'root'
 })
@@ -42,11 +43,8 @@ subList() {
     }
   );
     this.articlesId = articleArray[0].Id
-    let articleMap: Article = articleArray[0].articles
-    this.allarticles = Object.entries(articleMap).map(([key, value]) => ({
-    id: key,   
-    ...value 
-    }));
+    let articleMap = articleArray[0].articles
+    this.allarticles = Object.values(articleMap)
     this.articleSubject.next(this.allarticles);
     this.articleIdSubject.next(this.articlesId);
     console.log("allarticles", this.articleSubject, this.articlesObersavble$,articleArray, this.articlesId );
@@ -97,6 +95,20 @@ setArticleObject(obj: any) {
             weight: obj.weight,
             quantity: obj.quantity
         };
+
+}
+
+
+ async updateTourPlan(newTour:any) {
+  const tour = newTour[0];
+  let tourFireStoreId = tour.firestoreId
+  try {
+    const tourDocRef = doc(this.getTourRef(), tourFireStoreId )
+    await updateDoc(tourDocRef, tour);
+    console.log('Tour erfolgreich aktualisiert!');
+  } catch (error) {
+    console.error('Fehler beim Update:', error);
+  }
 
 }
 

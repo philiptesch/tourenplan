@@ -52,7 +52,8 @@ loadTourList() {
         time: time,
         article: tour.article,
         id: tour.id,
-        oldId: tour.id
+        oldId: tour.id,
+        firestoreId: tour.firestoreId
       });
     }
   });
@@ -63,7 +64,7 @@ loadTourList() {
     
     return `drop-${lkw}-${hour}`;
   }
-onTourCreated(tour: { time: string; tourcode: number; article: any, id: string, oldId:string }) {
+onTourCreated(tour: { time: string; tourcode: number; article: any, id: string, oldId:string, firestoreId:string }) {
   const hour = Number(tour.time.split(':')[0]);
   const tourcodeNum = Number(tour.tourcode);
   this.article = tour.article
@@ -74,7 +75,8 @@ onTourCreated(tour: { time: string; tourcode: number; article: any, id: string, 
       time: hour,
       tourcode: tourcodeNum,
       article: tour.article,
-      id: tour.id
+      id: tour.id,
+      firestoreId: tour.firestoreId
     };
     console.log('Paket aktualisiert:', this.tours[index]);
   } else {
@@ -82,7 +84,8 @@ onTourCreated(tour: { time: string; tourcode: number; article: any, id: string, 
       time: hour,
       tourcode: tourcodeNum,
       article: tour.article,
-      id: tour.id
+      id: tour.id,
+      firestoreId: tour.firestoreId
     });
     console.log('Neues Paket hinzugefügt:', this.tours[this.tours.length-1]);
   }
@@ -99,13 +102,18 @@ onTourCreated(tour: { time: string; tourcode: number; article: any, id: string, 
       // neue Position setzen
       tour.tourcode = newLkw;
       tour.time = newHour;
-
+      let newTour = event.container.data
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex
       );
+
+      this.firestoreService.updateTourPlan(newTour)
+      console.log('0newToru0', newTour);
+      
+      
     }
   }
 }
