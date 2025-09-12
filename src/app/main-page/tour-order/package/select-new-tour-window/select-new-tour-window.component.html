@@ -2,19 +2,28 @@
   <h1 class="text-center text-2xl mb-[20px]">Tour ändern</h1>
 
   <div>
-    <form class="flex pl-[100px] justify-center flex-col gap-[30px]"(ngSubmit)="changeNewTour($event)">
+    <form class="flex pl-[100px] justify-center flex-col gap-[30px]" (ngSubmit)="changeNewTour($event)">
 
       <!-- Uhrzeit -->
       <div>
         <label for="time">Welche Uhrzeit?</label>
         <div>
-          <input value="data.time" [(ngModel)]="time" class="mt-[10px]" type="time" name="time" min="08:00" max="16:00" required>
+          <input 
+            value="data.time" 
+            [(ngModel)]="time" 
+            class="mt-[10px]" 
+            type="time" 
+            name="time" 
+            min="08:00" 
+            max="16:00" 
+            required
+          >
         </div>
       </div>   
 
       <!-- Tour Auswahl -->
       <div>
-        <label  for="tourcode">Welche Tour?</label>
+        <label for="tourcode">Welche Tour?</label>
         <div>
           <select [(ngModel)]="tourcode" class="mt-[10px]" name="tourcode" id="tourcode" required>
             <option value="" disabled>Bitte wählen</option>
@@ -43,16 +52,40 @@
       </div>   
 
       <!-- Artikel -->
-      <div>
+      <div class="flex flex-col">
         <label for="article">Welche Artikel?</label>
-        <div>
-          <input value="data.article"  [(ngModel)]="article" class="mt-[10px]" type="text" name="article" required>
-        </div>
-      </div>   
+        <input  #inputArticle class="mt-[10px] w-[180px]" type="text" name="article" required>
 
-      <button class="flex w-[100px] p-[10px] rounded-[30px] bg-[#00ffbb]"> Tour erstellen</button>
+        <div class="flex flex-col gap-[10px] mt-[5px] bg-white border-solid border-[5px] border-4
+                    w-[61%] border-[#031d34f5] h-[250px] overflow-y-auto">
+
+          <!-- Wenn Input leer ist -->
+          <ng-container *ngIf="inputArticle.value.length == 0">
+            <div *ngFor="let selectArticle of article"
+                 [ngClass]="{'backgroundHover': filterSelectArticleFromAll(selectArticle)}">
+              <span class="cursor-pointer">
+                {{ selectArticle.name }} ({{ selectArticle.weight }}kg)
+              </span>
+            </div>
+          </ng-container>
+
+          <!-- Wenn Input >= 2 Zeichen -->
+          <ng-container *ngIf="inputArticle.value.length >= 2">
+            <div *ngFor="let item of allarticles"
+                 [ngClass]="{'backgroundHover': filterSelectArticle(item)}">
+              <span class="cursor-pointer">
+                {{ item.name }} ({{ item.weight }}kg)
+              </span>
+            </div>
+          </ng-container>
+
+        </div>
+      </div>
+
+      <button class="flex w-[100px] p-[10px] rounded-[30px] bg-[#00ffbb]">
+        Tour erstellen
+      </button>
 
     </form>
   </div>
 </section>
-

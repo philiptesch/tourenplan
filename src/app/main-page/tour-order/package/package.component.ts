@@ -18,7 +18,7 @@ export class PackageComponent {
   @Input() tourcode!: number;
   oldid! : string
   readonly dialog = inject(MatDialog);
-  @Output() newtourCreated = new EventEmitter<{time: string, tourcode: number, article: string,id:string, oldId:string, firestoreId:string}>();
+  @Output() newtourCreated = new EventEmitter<{time: string, tourcode: number, article: Article[],id:string, oldId:string, firestoreId:string}>();
 
   openDialog() {
     this.oldid = this.getId();

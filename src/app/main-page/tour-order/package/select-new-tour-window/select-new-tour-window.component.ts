@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Article } from '../../../../interfaces/article.interface';
+import { FirestoreServiceService } from '../../../../services/firestore-service.service';
 @Component({
   selector: 'app-select-new-tour-window',
   standalone: true,
@@ -13,14 +15,42 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class SelectNewTourWindowComponent {
 time!: string
 tourcode!: number;
-article!: string
+article!: Article[]
+allarticles!: Article[]
 id!: string
-constructor(public dialogRef: MatDialogRef<SelectNewTourWindowComponent>, @Inject(MAT_DIALOG_DATA) public data: { article: string; time: number, tourcode: number, oldid:string }) { 
+inputArticle!:string
+constructor(public dialogRef: MatDialogRef<SelectNewTourWindowComponent>, @Inject(MAT_DIALOG_DATA) public data: { article: Article[]; time: number, tourcode: number, oldid:string, 
+ 
+ },  private firstoreServie: FirestoreServiceService) { 
    this.time = this.data.time.toString().padStart(2, '0') + ':00'; // z.B. 14 -> "14:00"
    this.article = this.data.article;
    this.tourcode = this.data.tourcode;
 }
 
+
+  ngOnInit(): void {
+    this.firstoreServie.articlesObersavble$.subscribe(articles => {
+    this.allarticles = articles
+    console.log('this.allarticles', this.allarticles);
+    });
+    
+  }
+
+
+  filterSelectArticle(item:Article) {
+    return this.article.some(art => art.name == item.name)
+
+
+  //return this.allarticles.filter(all =>
+  //  this.article.some(a => a.name === all.name)
+  //);
+  }
+
+
+  filterArticleObject() {
+    return this.allarticles.filter(all =>
+    this.article.some(a => a.name === all.name));
+  }
 
 getnewId(){
     console.log(`drop-${this.tourcode}-${this.time}`);
@@ -28,6 +58,9 @@ getnewId(){
      return `drop-${this.tourcode}-${newTime}`
 }
 
+filterSelectArticleFromAll(selectArticle:Article) {
+  return this.allarticles.some(art => art.name == selectArticle.name)
+}
 
 
 changeNewTour(event:Event) {
