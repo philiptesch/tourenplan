@@ -61,17 +61,17 @@
 
           <!-- Wenn Input leer ist -->
           <ng-container *ngIf="inputArticle.value.length == 0">
-            <div *ngFor="let selectArticle of article"
-                 [ngClass]="{'backgroundHover': filterSelectArticleFromAll(selectArticle)}">
+            <div (click)="selectArticle(articleItem , i)" *ngFor="let articleItem  of article; let i = index"
+                 [ngClass]="{'backgroundHover': filterSelectArticleFromAll(articleItem )}">
               <span class="cursor-pointer">
-                {{ selectArticle.name }} ({{ selectArticle.weight }}kg)
+                {{ articleItem .name }} ({{ articleItem .weight }}kg)
               </span>
             </div>
           </ng-container>
 
           <!-- Wenn Input >= 2 Zeichen -->
           <ng-container *ngIf="inputArticle.value.length >= 2">
-            <div *ngFor="let item of allarticles"
+            <div (click)="selectArticle(item ,i)" *ngFor="let item of allarticles; let i = index"
                  [ngClass]="{'backgroundHover': filterSelectArticle(item)}">
               <span class="cursor-pointer">
                 {{ item.name }} ({{ item.weight }}kg)

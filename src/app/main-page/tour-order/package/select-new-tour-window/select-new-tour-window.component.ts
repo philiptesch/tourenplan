@@ -62,6 +62,18 @@ filterSelectArticleFromAll(selectArticle:Article) {
   return this.allarticles.some(art => art.name == selectArticle.name)
 }
 
+selectArticle(articleSelect:Article, index:number){
+  let checkArticle = this.article.some(art => art.name == articleSelect.name)
+
+if (checkArticle) {
+      this.article.splice(index, 1);
+
+} else {
+  this.article.push(articleSelect)
+}
+
+}
+
 
 changeNewTour(event:Event) {
     this.id = this.getnewId();
