@@ -19,7 +19,8 @@ article!: Article[]
 allarticles!: Article[]
 id!: string
 inputArticle!:string
-constructor(public dialogRef: MatDialogRef<SelectNewTourWindowComponent>, @Inject(MAT_DIALOG_DATA) public data: { article: Article[]; time: number, tourcode: number, oldid:string, 
+constructor(public dialogRef: MatDialogRef<SelectNewTourWindowComponent>, @Inject(MAT_DIALOG_DATA) public data: { article: Article[]; time: number, tourcode: number, oldid:string,
+  firestoreId:string 
  
  },  private firstoreServie: FirestoreServiceService) { 
    this.time = this.data.time.toString().padStart(2, '0') + ':00'; // z.B. 14 -> "14:00"
@@ -82,7 +83,8 @@ changeNewTour(event:Event) {
       tourcode: this.tourcode,
       article: this.article,
       id: this.id,
-      oldId: this.data.oldid
+      oldId: this.data.oldid,
+      firestoreId:this.data.firestoreId
     });
 
 }

@@ -102,6 +102,7 @@ onTourCreated(tour: { time: string; tourcode: number; article: any, id: string, 
       // neue Position setzen
       tour.tourcode = newLkw;
       tour.time = newHour;
+      tour.id = this.getDropListId(newLkw,newHour )
       let newTour = event.container.data
       transferArrayItem(
         event.previousContainer.data,
