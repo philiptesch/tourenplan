@@ -22,6 +22,7 @@ export class PackageComponent {
   id!: string;
   oldid! : string
  infoTextVisible: boolean = false
+ showArticleView: boolean = false
   readonly dialog = inject(MatDialog);
   @Output() newtourCreated = new EventEmitter<{time: string, tourcode: number, article: Article[],id:string, oldId:string, firestoreId:string}>();
 
@@ -73,4 +74,11 @@ toArray(result: any) {
   
      this.infoTextVisible = toggleBoolean;
   }
+
+
+  showInfoTextArticle(toggleBoolean: boolean) {
+  this.showArticleView = toggleBoolean;
+
+  }
+
 }
