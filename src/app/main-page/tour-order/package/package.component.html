@@ -1,6 +1,12 @@
 
 <div class="flex items-center gap-[15px]">
-<mat-icon class="cursor-pointer ml-[10px]" (click)="openDialog()"   fontIcon="menu"></mat-icon>
+<div class="relative">
+<mat-icon (mouseleave)="showInfoText(false)" (mouseover)="showInfoText(true)" class="cursor-pointer ml-[10px]" (click)="openDialog()"   fontIcon="menu"></mat-icon>
+<div *ngIf="infoTextVisible" class="border-solid border border-black absolute left-[29%] bottom-[37%] flex bg-[#f0f8ff] rounded-[40px]  w-[200px] h-[50px]" >
+    <span class="text-center "> Hier kannst du die Tour-Packet ändern</span>
+</div>
+</div>
+
 <h4 class="w-[50%] text-center text-[30px]"> Tour</h4>
 </div>
 <section class="w-full mt-[5px] gap-[20px] h-full flex items-center justify-start flex-col bg-[#E91E63]">

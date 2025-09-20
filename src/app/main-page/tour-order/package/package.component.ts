@@ -19,13 +19,19 @@ export class PackageComponent {
   @Input() time!: Number;
   @Input() tourcode!: number;
   @Input() tour!: Tour;
+  id!: string;
   oldid! : string
+ infoTextVisible: boolean = false
   readonly dialog = inject(MatDialog);
   @Output() newtourCreated = new EventEmitter<{time: string, tourcode: number, article: Article[],id:string, oldId:string, firestoreId:string}>();
 
 
 constructor(private firestoreService: FirestoreServiceService ) {
 
+}
+
+ngOnInit(): void {
+  this.id = `drop-${this.tourcode}-${this.time}`;
 }
 
   openDialog() {
@@ -60,5 +66,11 @@ toArray(result: any) {
   getId() {
     console.log(`drop-${this.tourcode}-${this.time}`);
      return `drop-${this.tourcode}-${this.time}`
+  }
+
+  showInfoText(toggleBoolean: boolean) {
+        
+  
+     this.infoTextVisible = toggleBoolean;
   }
 }

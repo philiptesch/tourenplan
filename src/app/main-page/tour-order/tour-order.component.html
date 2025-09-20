@@ -30,7 +30,7 @@
       <!-- Rechte scrollbare Stunden-Spalte -->
       <div class="flex flex-nowrap">
         <div *ngFor="let hour of hours"
-             cdkDropList
+             cdkDropList 
              [id]="getDropListId(lkw, hour)"
              [cdkDropListData]="showNewTour(lkw, hour)"
              [cdkDropListConnectedTo]="allDropLists"
