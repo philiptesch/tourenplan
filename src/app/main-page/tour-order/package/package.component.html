@@ -22,7 +22,7 @@
     </div>
 
     <div class="relative flex justify-center">
-        <h6 (mouseleave)="showInfoTextArticle(false)" (mouseover)="showInfoTextArticle(true)" class="cursor-pointer hover:underline"> Artikelvorschau</h6>
+        <h6 (click)="openDialogArticleView()" (mouseleave)="showInfoTextArticle(false)" (mouseover)="showInfoTextArticle(true)" class="cursor-pointer relative  hover:underline"> Artikelvorschau</h6>
         <span> {{article.name}}
         </span>
 

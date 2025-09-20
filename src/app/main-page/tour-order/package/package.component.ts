@@ -3,6 +3,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { SelectNewTourWindowComponent } from './select-new-tour-window/select-new-tour-window.component';
+import { ArticleViewComponent } from './article-view/article-view.component';
 import {Article} from '../../../interfaces/article.interface'
 import { Tour } from '../../../interfaces/tour.interface';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
@@ -61,6 +62,15 @@ toArray(result: any) {
     tourcode: result.tourcode,
     article: result.article
   }];
+}
+
+
+openDialogArticleView() {
+    let id = this.getId();
+    let dialogRef = this.dialog.open(ArticleViewComponent, {
+      data: { article: this.tour.article, tourId: id, tour: this.tour  }, 
+       panelClass: 'custom-dialog-2' 
+    });
 }
 
 
