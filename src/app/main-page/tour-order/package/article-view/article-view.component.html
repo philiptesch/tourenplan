@@ -1,1 +1,16 @@
-<h1> Tour  {{tourId}}</h1>
+<h1 class="flex justify-center font-bold underline text-[24px] p-[10px] sticky top-0 z-20">
+  Tour {{ newTourId }}
+</h1>
+
+<div>
+  <h4 class="mt-[20px] text-[20px] text-center sticky top-0 z-20">
+    Artikel-Liste
+</h4>
+
+  <ul class="space-y-4 max-h-[400px]  overflow-y-auto">
+    <li *ngFor="let item of article" 
+        class="bg-white shadow-md rounded-lg p-4">
+      <h2>{{ item.name }}</h2>
+    </li>
+  </ul>
+</div>
