@@ -97,6 +97,13 @@ onTourCreated(tour: { time: string; tourcode: number; article: any, id: string, 
 
   drop(event: CdkDragDrop<any[]>, newLkw: number, newHour: number) {
     if (event.previousContainer !== event.container) {
+
+      if (!this.checkTourIsAlreadyPresent(newLkw,newHour)) {
+        
+      
+        
+      
+      
       const tour = event.previousContainer.data[event.previousIndex];
 
       // neue Position setzen
@@ -113,8 +120,16 @@ onTourCreated(tour: { time: string; tourcode: number; article: any, id: string, 
 
       this.firestoreService.updateTourPlan(newTour)
       console.log('0newToru0', newTour);
-      
+    }
       
     }
   }
+
+
+
+
+checkTourIsAlreadyPresent(newLkw: number, newHour: number) {
+  return this.tours.some(tour => tour.time == newHour && tour.tourcode == newLkw )
+}
+
 }
