@@ -4,14 +4,15 @@ import { CommonModule } from '@angular/common';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { SelectNewTourWindowComponent } from './select-new-tour-window/select-new-tour-window.component';
 import { ArticleViewComponent } from './article-view/article-view.component';
+import { TourViewComponent } from './tour-view/tour-view.component';
 import {Article} from '../../../interfaces/article.interface'
 import { Tour } from '../../../interfaces/tour.interface';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
-
+import { HandelServiceService } from '../../../services/handel-service.service';
 @Component({
   selector: 'app-package',
   standalone: true,
-  imports: [MatIconModule, CommonModule],
+  imports: [MatIconModule, CommonModule, TourViewComponent],
   templateUrl: './package.component.html',
   styleUrl: './package.component.scss'
 })
@@ -28,7 +29,7 @@ export class PackageComponent {
   @Output() newtourCreated = new EventEmitter<{time: string, tourcode: number, article: Article[],id:string, oldId:string, firestoreId:string}>();
 
 
-constructor(private firestoreService: FirestoreServiceService ) {
+constructor(private firestoreService: FirestoreServiceService, public handleService: HandelServiceService ) {
 
 }
 
@@ -89,6 +90,16 @@ openDialogArticleView() {
   showInfoTextArticle(toggleBoolean: boolean) {
   this.showArticleView = toggleBoolean;
 
+  }
+
+
+  openTourView(){
+   this.handleService.openTourView()
+  }
+
+
+  closeTourView() {
+    this.handleService.closeTourView()
   }
 
 }
