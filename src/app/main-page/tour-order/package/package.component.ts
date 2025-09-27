@@ -25,6 +25,7 @@ export class PackageComponent {
   oldid! : string
  infoTextVisible: boolean = false
  showArticleView: boolean = false
+ showTourView: boolean = false;
   readonly dialog = inject(MatDialog);
   @Output() newtourCreated = new EventEmitter<{time: string, tourcode: number, article: Article[],id:string, oldId:string, firestoreId:string}>();
 
@@ -93,13 +94,14 @@ openDialogArticleView() {
   }
 
 
-  openTourView(){
-   this.handleService.openTourView()
+  toggleTourView(){
+   this.showTourView = !this.showTourView;
+
   }
 
 
   closeTourView() {
-    this.handleService.closeTourView()
+    this.showTourView = false;
   }
 
 }
