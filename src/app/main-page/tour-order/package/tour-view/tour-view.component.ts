@@ -15,16 +15,48 @@ import { Tour } from '../../../../interfaces/tour.interface';
   templateUrl: './tour-view.component.html',
   styleUrl: './tour-view.component.scss'
 })
-export class TourViewComponent {
+export class TourViewComponent implements OnInit {
 @Input() tour!: Tour;
 @Output() close = new EventEmitter<void>();
-
+totalWeight: number = 0
+tourBeginTime!: String
+tourEndTime!: String
   constructor() {
   }
 
-
+  ngOnInit(): void {
+  this.calculateTotalWeight();
+  this.representTime();
+    
+  }
 
     onClose() {
     this.close.emit();
   }
+
+
+  calculateTotalWeight() {
+    this.tour.article.forEach(art => {
+      this.totalWeight += art.weight
+    });
+
+    console.log('this.totalWeight',this.totalWeight);
+  }
+
+
+    
+    representTime() {
+    const beginHour = this.tour.time.toFixed(2)
+    const beginHourFormatted = beginHour.replace('.', ':');
+    this.tourBeginTime =  beginHourFormatted.toString()
+  
+    const calculateEndHour = this.tour.time + 1
+    const endHour  = calculateEndHour.toFixed(2)
+    const endHourFormatted = endHour.replace('.', ':');
+    this.tourEndTime =  endHourFormatted.toString() 
+
+
+    }
+
+
 }

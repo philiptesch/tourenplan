@@ -1,7 +1,12 @@
-<section>
+<section class="w-full flex flex-col gap-[10px]">
+
+    <header class="flex  items-center gap-[10px] text-[20px]">
 <mat-icon (click)="onClose()" class="cursor-pointer"    fontIcon="arrow_back"></mat-icon>
+<h1> Tour {{tour.id}}</h1>
+</header>
 
 
-
+<h6 class="text-[16px]"> Gesamtgewicht: {{ totalWeight}} kg </h6>
+<h6 class="text-[16px]"> Uhrzeit: {{tourBeginTime}} - {{tourEndTime}} Uhr  </h6>
 
 </section>

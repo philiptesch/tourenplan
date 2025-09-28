@@ -3,7 +3,7 @@
 <div class="relative">
 
 
-<app-tour-view class="p-[15px] z-[100] bg-[#a2dbeb] flex absolute top-[-7px] h-[177px] w-[200px]   h-full" *ngIf="showTourView"  (close)="closeTourView()" [tour]="tour"> </app-tour-view>
+<app-tour-view class="p-[10px] z-[100] bg-[#a2dbeb] flex absolute top-[-7px] h-[180px] w-[200px]" *ngIf="showTourView"  (close)="closeTourView()" [tour]="tour"> </app-tour-view>
 
 
 <mat-icon (mouseleave)="showInfoText(false)" (mouseover)="showInfoText(true)" class="cursor-pointer ml-[10px]" (click)="openDialog()"   fontIcon="menu"></mat-icon>
