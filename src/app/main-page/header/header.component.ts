@@ -10,7 +10,7 @@ import { FirestoreServiceService } from '../../services/firestore-service.servic
 export class HeaderComponent {
 
 
-constructor(private FirestoreService: FirestoreServiceService) {
+constructor(public firestoreService: FirestoreServiceService) {
 
 
 }

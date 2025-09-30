@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "name": "Miller Bakery",
+    "address": "Main Street 12",
+    "postalCode": "10115",
+    "city": "Berlin",
+    "phone": "+49 151 23456701",
+    "deliveryNote": "Delivery only between 7-9 AM"
+  },
+  {
+    "id": 2,
+    "name": "Schmidt Beverages",
+    "address": "Station Road 45",
+    "postalCode": "80331",
+    "city": "Munich",
+    "phone": "+49 151 23456702",
+    "deliveryNote": "Use back entrance for delivery"
+  },
+  {
+    "id": 3,
+    "name": "Klein Butchery",
+    "address": "Market Square 8",
+    "postalCode": "50667",
+    "city": "Cologne",
+    "phone": "+49 151 23456703",
+    "deliveryNote": "No parking in front, use side street"
+  },
+  {
+    "id": 4,
+    "name": "Restaurant La Piazza",
+    "address": "Italian Way 22",
+    "postalCode": "20095",
+    "city": "Hamburg",
+    "phone": "+49 151 23456704",
+    "deliveryNote": "Delivery only in the afternoon"
+  },
+  {
+    "id": 5,
+    "name": "Sunny Café",
+    "address": "Garden Lane 5",
+    "postalCode": "70173",
+    "city": "Stuttgart",
+    "phone": "+49 151 23456705",
+    "deliveryNote": "No deliveries on Mondays"
+  },
+  {
+    "id": 6,
+    "name": "Tech Supplies GmbH",
+    "address": "Innovation Park 10",
+    "postalCode": "34117",
+    "city": "Kassel",
+    "phone": "+49 151 23456706",
+    "deliveryNote": "Call before arrival"
+  },
+  {
+    "id": 7,
+    "name": "Green Grocery",
+    "address": "Leaf Street 4",
+    "postalCode": "28195",
+    "city": "Bremen",
+    "phone": "+49 151 23456707",
+    "deliveryNote": "Deliver to storage entrance"
+  },
+  {
+    "id": 8,
+    "name": "Fashion Store Vogue",
+    "address": "Shopping Alley 18",
+    "postalCode": "01067",
+    "city": "Dresden",
+    "phone": "+49 151 23456708",
+    "deliveryNote": "No deliveries during lunch (12-2 PM)"
+  },
+  {
+    "id": 9,
+    "name": "Bookshop Horizon",
+    "address": "Library Road 33",
+    "postalCode": "90402",
+    "city": "Nuremberg",
+    "phone": "+49 151 23456709",
+    "deliveryNote": "Deliver to side door"
+  },
+  {
+    "id": 10,
+    "name": "Pharmacy CarePlus",
+    "address": "Health Street 9",
+    "postalCode": "38100",
+    "city": "Braunschweig",
+    "phone": "+49 151 23456710",
+    "deliveryNote": "Urgent items prioritized"
+  },
+  {
+    "id": 11,
+    "name": "Coffee Roasters Berlin",
+    "address": "Bean Street 7",
+    "postalCode": "12043",
+    "city": "Berlin",
+    "phone": "+49 151 23456711",
+    "deliveryNote": "Ring bell twice"
+  },
+  {
+    "id": 12,
+    "name": "Hotel Central",
+    "address": "City Square 1",
+    "postalCode": "99084",
+    "city": "Erfurt",
+    "phone": "+49 151 23456712",
+    "deliveryNote": "Deliver at reception"
+  },
+  {
+    "id": 13,
+    "name": "Flower Shop Rose",
+    "address": "Blossom Street 15",
+    "postalCode": "14467",
+    "city": "Potsdam",
+    "phone": "+49 151 23456713",
+    "deliveryNote": "Handle with care"
+  },
+  {
+    "id": 14,
+    "name": "Sports Arena",
+    "address": "Stadium Road 50",
+    "postalCode": "44135",
+    "city": "Dortmund",
+    "phone": "+49 151 23456714",
+    "deliveryNote": "Deliver to gate C"
+  },
+  {
+    "id": 15,
+    "name": "Music Store Harmony",
+    "address": "Melody Lane 22",
+    "postalCode": "60311",
+    "city": "Frankfurt",
+    "phone": "+49 151 23456715",
+    "deliveryNote": "Unload at rear entrance"
+  },
+  {
+    "id": 16,
+    "name": "Organic Market Fresh",
+    "address": "Harvest Road 10",
+    "postalCode": "86150",
+    "city": "Augsburg",
+    "phone": "+49 151 23456716",
+    "deliveryNote": "No plastic packaging"
+  },
+  {
+    "id": 17,
+    "name": "Cinema Star",
+    "address": "Movie Street 2",
+    "postalCode": "99084",
+    "city": "Erfurt",
+    "phone": "+49 151 23456717",
+    "deliveryNote": "Delivery before 11 AM"
+  },
+  {
+    "id": 18,
+    "name": "Pet Shop Paws",
+    "address": "Animal Lane 3",
+    "postalCode": "44787",
+    "city": "Bochum",
+    "phone": "+49 151 23456718",
+    "deliveryNote": "Knock loudly, dogs inside"
+  },
+  {
+    "id": 19,
+    "name": "Bakery SweetDreams",
+    "address": "Baker Street 14",
+    "postalCode": "27568",
+    "city": "Bremerhaven",
+    "phone": "+49 151 23456719",
+    "deliveryNote": "Delivery only mornings"
+  },
+  {
+    "id": 20,
+    "name": "Furniture House",
+    "address": "Living Road 27",
+    "postalCode": "66111",
+    "city": "Saarbrücken",
+    "phone": "+49 151 23456720",
+    "deliveryNote": "Use delivery entrance"
+  },
+  {
+    "id": 21,
+    "name": "Gasthof Linden",
+    "address": "Village Street 7",
+    "postalCode": "35037",
+    "city": "Marburg",
+    "phone": "+49 151 23456721",
+    "deliveryNote": "Deliver after 5 PM"
+  },
+  {
+    "id": 22,
+    "name": "Toy World",
+    "address": "Playground Road 8",
+    "postalCode": "89073",
+    "city": "Ulm",
+    "phone": "+49 151 23456722",
+    "deliveryNote": "No delivery on Sundays"
+  },
+  {
+    "id": 23,
+    "name": "Bike Shop Speedy",
+    "address": "Cycle Road 5",
+    "postalCode": "33602",
+    "city": "Bielefeld",
+    "phone": "+49 151 23456723",
+    "deliveryNote": "Deliver to basement entrance"
+  },
+  {
+    "id": 24,
+    "name": "Art Gallery Modern",
+    "address": "Gallery Lane 11",
+    "postalCode": "55116",
+    "city": "Mainz",
+    "phone": "+49 151 23456724",
+    "deliveryNote": "Fragile goods"
+  },
+  {
+    "id": 25,
+    "name": "Supermarket QuickBuy",
+    "address": "Market Street 99",
+    "postalCode": "68159",
+    "city": "Mannheim",
+    "phone": "+49 151 23456725",
+    "deliveryNote": "Large truck access available"
+  },
+  {
+    "id": 26,
+    "name": "Pharmacy HealthFirst",
+    "address": "Doctor Road 44",
+    "postalCode": "17489",
+    "city": "Greifswald",
+    "phone": "+49 151 23456726",
+    "deliveryNote": "Delivery at side entrance"
+  },
+  {
+    "id": 27,
+    "name": "Bakery GoldenCrust",
+    "address": "Bread Street 6",
+    "postalCode": "66119",
+    "city": "Saarbrücken",
+    "phone": "+49 151 23456727",
+    "deliveryNote": "No delivery after 2 PM"
+  },
+  {
+    "id": 28,
+    "name": "Fashion Boutique Elegance",
+    "address": "Style Lane 21",
+    "postalCode": "93047",
+    "city": "Regensburg",
+    "phone": "+49 151 23456728",
+    "deliveryNote": "Call before delivery"
+  },
+  {
+    "id": 29,
+    "name": "Restaurant OceanView",
+    "address": "Harbor Road 30",
+    "postalCode": "24103",
+    "city": "Kiel",
+    "phone": "+49 151 23456729",
+    "deliveryNote": "Deliver to kitchen entrance"
+  },
+  {
+    "id": 30,
+    "name": "Coffee Shop MorningBrew",
+    "address": "Sunrise Avenue 8",
+    "postalCode": "04109",
+    "city": "Leipzig",
+    "phone": "+49 151 23456730",
+    "deliveryNote": "Deliver before 8 AM"
+  }
+]

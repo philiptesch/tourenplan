@@ -3,6 +3,8 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { Firestore, collectionData, collection,addDoc, onSnapshot, updateDoc, doc } from '@angular/fire/firestore';
 import articles from '../services/article.json';
+import  customerJSON from '../services/customerJSON.json';
+import { customer } from '../interfaces/customer.interface';
 import { BehaviorSubject, timestamp } from 'rxjs';
 import { Article } from '../interfaces/article.interface';
 import { Tour } from '../interfaces/tour.interface';
@@ -18,17 +20,21 @@ export class FirestoreServiceService {
     public articlesIdObersavble$ = this.articleIdSubject.asObservable();
     private tourSubject = new BehaviorSubject(<Tour[]>[]);
     public tourObersavble$ = this.tourSubject.asObservable();
+    private customerSubject = new BehaviorSubject(<customer[]>[]);
+    public  customerObersavble$ = this.customerSubject.asObservable();
     newArray: any[] = []; 
     allarticles: any[] = [];
     articlesId!:string
     tour: Tour[] = []
+    new: any = []
   constructor() {
     this.subList()
     this.subListTouren()
+    this.subListCusteromer()
    }
 
-   getArticles() {
-    return articles;
+   getcustomerJSON() {
+    return customerJSON;
   }
 
 subList() {
@@ -50,6 +56,38 @@ subList() {
     console.log("allarticles", this.articleSubject, this.articlesObersavble$,articleArray, this.articlesId );
   });
 }
+
+
+subListCusteromer() {
+  return onSnapshot(this.getCustomerRef(), (snapshot) => {
+
+    const customerArray: any[] =[]
+
+    snapshot.forEach(element => {
+        customerArray.push({fireStoreId: element.id,       
+      ...element.data() as customer})
+    });
+    console.log('customerArray',customerArray);
+    
+});
+
+  
+}
+
+customerJSON(data: any, id:any) {
+  return {
+  id: data.id,
+  name: data.name,
+  address: data.address,
+  postalCode: data.postalCode,
+  city: data.city,
+  phone: data.phone,
+  deliveryNote: data.deliveryNote,
+  fireStoreId: id 
+};
+}
+
+
 
 
 
@@ -76,6 +114,12 @@ subListTouren() {
 
     getTourRef() {
        return collection(this.firestore, 'touren');
+    }
+
+
+    
+    getCustomerRef() {
+       return collection(this.firestore, 'customer');
     }
 
 async addTourInFireBase(tour: Tour) {
@@ -114,11 +158,27 @@ setArticleObject(obj: any) {
 
 
 
-//  async addJsonToFirebase() {
-//  //  const docRef = await addDoc(collection(this.firestore, "articles"), 
-//  this.getArticles()).then(docRef => console.log('Document added with ID:', docRef.id))
-//    .catch(err => console.error(err));;
-//  }
+  //async addJsonToFirebase() {
+  //const docRef = await addDoc(collection(this.firestore, "customer"), 
+  // this.getcustomerJSON()).then(docRef => console.log('Document added with ID:', docRef.id))
+   //  .catch(err => console.error(err));;
+   //}
+
+
+//async addjson() {
+  //try {
+ //   for (const customer of this.getcustomerJSON()) {
+//      const docRef = await addDoc(
+   //     collection(this.firestore, "customer"),
+////        customer
+   //   );
+  //    console.log("Kunde hinzugefügt mit ID:", docRef.id);
+  //  }
+//  } catch (error) {
+  //  console.error("Fehler beim Import der Kunden:", error);
+ // }
+//}
 
 
 }
+
