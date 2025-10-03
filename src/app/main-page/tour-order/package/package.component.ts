@@ -7,6 +7,7 @@ import { ArticleViewComponent } from './article-view/article-view.component';
 import { TourViewComponent } from './tour-view/tour-view.component';
 import {Article} from '../../../interfaces/article.interface'
 import { Tour } from '../../../interfaces/tour.interface';
+import { customer } from '../../../interfaces/customer.interface';
 import { FirestoreServiceService } from '../../../services/firestore-service.service';
 import { HandelServiceService } from '../../../services/handel-service.service';
 @Component({
@@ -21,6 +22,7 @@ export class PackageComponent {
   @Input() time!: Number;
   @Input() tourcode!: number;
   @Input() tour!: Tour;
+  @Input() customer!: customer[]
   id!: string;
   oldid! : string
  infoTextVisible: boolean = false

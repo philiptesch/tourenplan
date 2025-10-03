@@ -67,7 +67,19 @@
       </span>
       </div>
         </div>
-      </div>   
+      </div>  
+      <div>
+  <label for="customer">Welcher Kunde?</label>
+  <div>
+    <input  (input)="checkArticle($event)" #inputCustomer   type="text" [(ngModel)]="customer" name="customer" placeholder="Eingabe erforderlich">
+     <div *ngIf="inputCustomer.value.length >=2"  class="flex flex-col gap-[10px] mt-[5px] bg-white border-solid border-[5px] border-4
+     w-[61%] border-[#031d34f5] h-[250px] overflow-y-auto">  
+         <div [ngClass]="{'backgroundHover': selectedCustomer(customer)}" *ngFor="let customer of customerList ">
+        <span (click)="selectCustomer(customer)" class="cursor-pointer" > {{customer.name}}, {{customer.city}}</span>
+          </div>
+</div>
+  </div>
+</div> 
     </div>
     
     

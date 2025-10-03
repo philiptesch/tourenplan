@@ -69,6 +69,9 @@ subListCusteromer() {
     });
     console.log('customerArray',customerArray);
     
+    this.customerSubject.next(customerArray)
+
+
 });
 
   

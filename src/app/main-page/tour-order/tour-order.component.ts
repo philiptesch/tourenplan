@@ -7,6 +7,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {Article} from '../../interfaces/article.interface'
 import { FirestoreServiceService } from '../../services/firestore-service.service';
 import { Tour } from '../../interfaces/tour.interface';
+import { customer } from '../../interfaces/customer.interface';
 @Component({
   selector: 'app-tour-order',
   standalone: true,
@@ -18,6 +19,7 @@ export class TourOrderComponent {
   hours = [8, 9, 10, 11, 12, 13, 14, 15, 16];
   lkws = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20];
   article!:Article
+  customerList: customer[] = []
 
   tours: Tour[] = []
   touren: Tour[] = []
@@ -31,6 +33,7 @@ export class TourOrderComponent {
 
 async  ngOnInit() {
 await  this.loadTourList();
+await  this.loadCustolerlist();
 
     for (let lkw of this.lkws) {
       for (let hour of this.hours) {
@@ -57,6 +60,17 @@ loadTourList() {
       });
     }
   });
+}
+
+
+
+loadCustolerlist() {
+  this.firestoreService.customerObersavble$.subscribe(customer => {
+    this.customerList = customer
+    console.log('this.customerList',this.customerList);
+    
+
+  })
 }
 
 

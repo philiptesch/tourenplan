@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatDialogRef } from '@angular/material/dialog';
 import  {FirestoreServiceService} from '../../../../services/firestore-service.service'
 import { Article } from '../../../../interfaces/article.interface';
+import { customer } from '../../../../interfaces/customer.interface';
 import { ifError } from 'assert';
 import { log } from 'console';
 @Component({
@@ -16,7 +17,8 @@ import { log } from 'console';
 export class AddNewPackageComponent implements OnInit {
 time!: string
 tourcode!: string;
-article!: string
+article!: string;
+customer!:string
 lkws = [1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12,13,14,16,17,18,19,20];
   newTour = {
     time: '',
@@ -28,9 +30,12 @@ lkws = [1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12,13,14,16,17,18,19,20];
   allarticles: Article[] = [];
   checkAllArticle: Article[] = [];
   articleId!:string
+  
   showANotice!:boolean
   checkTour!:boolean
   showNoticeArticleIsMiss!:boolean
+  customerList!: customer[]
+  checkCustomer: customer[] = [];
   constructor(private dialogRef: MatDialogRef<AddNewPackageComponent>, private firestoreService: FirestoreServiceService) {}
 
 
@@ -44,8 +49,13 @@ lkws = [1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12,13,14,16,17,18,19,20];
        this.articleId =id
         console.log('this.allarticles', this.articleId);
     })
+
+    this.firestoreService.customerObersavble$.subscribe(customer => {
+      this.customerList = customer
+    })
+}
     
-  }
+  
 
   getId() {
     const newTime = Number(this.time.split(':')[0]);
@@ -97,6 +107,31 @@ checkTourInput() {
   } else
     this.checkTour = false
 }
+
+
+checkArticle(event:Event) {
+    const input = event.target as HTMLInputElement
+    const value = input.value;
+
+       if (value.length >= 2) {
+      
+}
+
+}
+
+
+selectCustomer(customer:any) {
+  this.checkCustomer = this.customerList.filter(cust => cust.name === customer.name)
+  console.log('checkCustomer', this.checkCustomer);
+  
+
+}
+
+
+selectedCustomer(customer:any) {
+  return this.checkCustomer.some(cust => cust.name === customer.name)
+}
+
 
 onInputChange(event:Event) {
   const input = event.target as HTMLInputElement; // Typ-Casting
