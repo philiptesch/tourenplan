@@ -75,7 +75,8 @@ createTour(event: Event) {
       time: this.time,
       tourcode: this.tourcode,
       article: this.selcectArticles, 
-      id: this.id
+      id: this.id,
+      customer: this.checkCustomer
     });
   } else {
   this.showNoticeArticleIsMiss = true

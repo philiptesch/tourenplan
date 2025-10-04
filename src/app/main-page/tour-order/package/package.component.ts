@@ -29,7 +29,7 @@ export class PackageComponent {
  showArticleView: boolean = false
  showTourView: boolean = false;
   readonly dialog = inject(MatDialog);
-  @Output() newtourCreated = new EventEmitter<{time: string, tourcode: number, article: Article[],id:string, oldId:string, firestoreId:string}>();
+  @Output() newtourCreated = new EventEmitter<{time: string, tourcode: number, article: Article[],id:string, oldId:string, firestoreId:string, customer: customer[]}>();
 
 
 constructor(private firestoreService: FirestoreServiceService, public handleService: HandelServiceService ) {

@@ -16,7 +16,7 @@ import { customer } from '../../../interfaces/customer.interface';
 })
 export class TourPackageComponent {
   readonly dialog = inject(MatDialog);
-  @Output() tourCreated = new EventEmitter<{time: string, tourcode: number, article: string, id:string, oldId:string, firestoreId:string}>();
+  @Output() tourCreated = new EventEmitter<{time: string, tourcode: number, article: string, id:string, oldId:string, firestoreId:string,customer: customer[]}>();
   constructor(private firstoreServie: FirestoreServiceService) {
 
   }

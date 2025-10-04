@@ -56,7 +56,9 @@ loadTourList() {
         article: tour.article,
         id: tour.id,
         oldId: tour.id,
-        firestoreId: tour.firestoreId
+        firestoreId: tour.firestoreId,
+        customer: tour.customer
+
       });
     }
   });
@@ -78,7 +80,7 @@ loadCustolerlist() {
     
     return `drop-${lkw}-${hour}`;
   }
-onTourCreated(tour: { time: string; tourcode: number; article: any, id: string, oldId:string, firestoreId:string }) {
+onTourCreated(tour: { time: string; tourcode: number; article: any, id: string, oldId:string, firestoreId:string, customer: customer[] }) {
   const hour = Number(tour.time.split(':')[0]);
   const tourcodeNum = Number(tour.tourcode);
   this.article = tour.article
@@ -90,7 +92,8 @@ onTourCreated(tour: { time: string; tourcode: number; article: any, id: string, 
       tourcode: tourcodeNum,
       article: tour.article,
       id: tour.id,
-      firestoreId: tour.firestoreId
+      firestoreId: tour.firestoreId, 
+      customer: tour.customer
     };
     console.log('Paket aktualisiert:', this.tours[index]);
   } else {
@@ -99,7 +102,9 @@ onTourCreated(tour: { time: string; tourcode: number; article: any, id: string, 
       tourcode: tourcodeNum,
       article: tour.article,
       id: tour.id,
-      firestoreId: tour.firestoreId
+      firestoreId: tour.firestoreId,
+      customer: tour.customer
+
     });
     console.log('Neues Paket hinzugefügt:', this.tours[this.tours.length-1]);
   }
