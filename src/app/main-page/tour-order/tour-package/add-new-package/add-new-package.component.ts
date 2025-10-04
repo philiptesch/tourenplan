@@ -110,7 +110,7 @@ checkTourInput() {
 }
 
 
-checkArticle(event:Event) {
+checkCustomerInput(event:Event) {
     const input = event.target as HTMLInputElement
     const value = input.value;
 

@@ -82,6 +82,25 @@
         </div>
       </div>
 
+
+        <div>
+        <div>
+      <label for="customer">Welcher Kunde?</label>
+        <div>
+        <input type="text" #inputCustomer   type="text" name="customer" placeholder="Eingabe erforderlich">
+           <div *ngIf="inputCustomer.value.length >=2"  class="flex flex-col gap-[10px] mt-[5px] bg-white border-solid border-[5px] border-4
+     w-[61%] border-[#031d34f5] h-[250px] overflow-y-auto">  
+               <div *ngFor="let customer of customerList">
+        <span [ngClass]="{'backgroundHover': filteredCustomerList(customer)}"  class="cursor-pointer" >{{customer.name}}, {{customer.city}} </span>
+      </div>
+       </div>
+        </div>
+         </div>
+           </div>
+      
+
+
+
       <button class="flex w-[100px] p-[10px] rounded-[30px] bg-[#00ffbb]">
         Tour Ändern
       </button>

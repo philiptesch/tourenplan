@@ -46,7 +46,7 @@ ngOnInit(): void {
     console.log('this.tour' ,this.tour);
     this.tour.article
     let dialogRef = this.dialog.open(SelectNewTourWindowComponent, {
-      data: { article: this.tour.article, time: this.time, tourcode:this.tourcode, oldid: this.oldid, firestoreId: this.tour.firestoreId   }
+      data: { article: this.tour.article, time: this.time, tourcode:this.tourcode, oldid: this.oldid, firestoreId: this.tour.firestoreId, customerList: this.customer, customer: this.tour.customer  }
     });
 
     dialogRef.afterClosed().subscribe(result => {

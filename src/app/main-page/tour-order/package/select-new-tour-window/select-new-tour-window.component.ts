@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Article } from '../../../../interfaces/article.interface';
 import { FirestoreServiceService } from '../../../../services/firestore-service.service';
+import { customer } from '../../../../interfaces/customer.interface';
 @Component({
   selector: 'app-select-new-tour-window',
   standalone: true,
@@ -19,13 +20,17 @@ article!: Article[]
 allarticles!: Article[]
 id!: string
 inputArticle!:string
-constructor(public dialogRef: MatDialogRef<SelectNewTourWindowComponent>, @Inject(MAT_DIALOG_DATA) public data: { article: Article[]; time: number, tourcode: number, oldid:string,
-  firestoreId:string 
+customerList! : customer[] 
+customer!: customer[] 
+constructor(public dialogRef: MatDialogRef<SelectNewTourWindowComponent>, @Inject(MAT_DIALOG_DATA) public data: { article: Article[]; time: number, tourcode: number, oldid:string, customerList: customer[], customer: customer[]
+  firestoreId:string  
  
  },  private firstoreServie: FirestoreServiceService) { 
    this.time = this.data.time.toString().padStart(2, '0') + ':00'; // z.B. 14 -> "14:00"
    this.article = this.data.article;
    this.tourcode = this.data.tourcode;
+   this.customerList = this.data.customerList;
+    this.customer = this.data.customer;
 }
 
 
@@ -51,6 +56,15 @@ constructor(public dialogRef: MatDialogRef<SelectNewTourWindowComponent>, @Injec
   filterArticleObject() {
     return this.allarticles.filter(all =>
     this.article.some(a => a.name === all.name));
+  }
+
+
+  filteredCustomerList(customer: customer) {
+   return   this.customer.some(cust => this.customerList.some(listCust=> listCust.name === cust.name && 
+    cust.name === customer.name
+   ))
+
+
   }
 
 getnewId(){
