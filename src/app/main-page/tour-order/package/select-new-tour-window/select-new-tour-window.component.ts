@@ -22,6 +22,7 @@ id!: string
 inputArticle!:string
 customerList! : customer[] 
 customer!: customer[] 
+newCustomerList!: customer[]
 constructor(public dialogRef: MatDialogRef<SelectNewTourWindowComponent>, @Inject(MAT_DIALOG_DATA) public data: { article: Article[]; time: number, tourcode: number, oldid:string, customerList: customer[], customer: customer[]
   firestoreId:string  
  
@@ -56,6 +57,16 @@ constructor(public dialogRef: MatDialogRef<SelectNewTourWindowComponent>, @Injec
   filterArticleObject() {
     return this.allarticles.filter(all =>
     this.article.some(a => a.name === all.name));
+  }
+
+  filterCustomerName(event: Event) {
+  const input = event.target as HTMLInputElement; // Typ-Casting
+  const value = input.value.toLowerCase();
+
+  this.newCustomerList = this.customerList.filter(cust=> cust.name?.toLowerCase().includes(value)).
+  sort((a, b) => a.name.localeCompare(b.name));
+    console.log('newCustomerList',this.newCustomerList );
+    
   }
 
 

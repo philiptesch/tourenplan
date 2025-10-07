@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { SelectNewTourWindowComponent } from './select-new-tour-window/select-new-tour-window.component';
 import { ArticleViewComponent } from './article-view/article-view.component';
+import { CustomerViewComponent } from './customer-view/customer-view.component';
 import { TourViewComponent } from './tour-view/tour-view.component';
 import {Article} from '../../../interfaces/article.interface'
 import { Tour } from '../../../interfaces/tour.interface';
@@ -13,7 +14,7 @@ import { HandelServiceService } from '../../../services/handel-service.service';
 @Component({
   selector: 'app-package',
   standalone: true,
-  imports: [MatIconModule, CommonModule, TourViewComponent],
+  imports: [MatIconModule, CommonModule, TourViewComponent, CustomerViewComponent],
   templateUrl: './package.component.html',
   styleUrl: './package.component.scss'
 })
@@ -27,6 +28,7 @@ export class PackageComponent {
   oldid! : string
  infoTextVisible: boolean = false
  showArticleView: boolean = false
+ showCustomer: boolean = false
  showTourView: boolean = false;
   readonly dialog = inject(MatDialog);
   @Output() newtourCreated = new EventEmitter<{time: string, tourcode: number, article: Article[],id:string, oldId:string, firestoreId:string, customer: customer[]}>();
@@ -77,6 +79,14 @@ openDialogArticleView() {
     });
 }
 
+openDialogCustomerView( ) {
+  let id = this.getId();
+    let dialogRef = this.dialog.open(CustomerViewComponent, {
+      data: { customer: this.tour.customer, tourId: id, tour: this.tour   }, 
+       panelClass: 'custom-dialog-2' 
+    });
+}
+
 
   getId() {
     console.log(`drop-${this.tourcode}-${this.time}`);
@@ -92,6 +102,12 @@ openDialogArticleView() {
 
   showInfoTextArticle(toggleBoolean: boolean) {
   this.showArticleView = toggleBoolean;
+
+  }
+
+
+    showInfoTextCustomer(toggleBoolean: boolean) {
+  this.showCustomer = toggleBoolean;
 
   }
 

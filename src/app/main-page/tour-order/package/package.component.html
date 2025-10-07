@@ -30,14 +30,22 @@
 
     <div class="relative flex justify-center">
         <h6 (click)="openDialogArticleView()" (mouseleave)="showInfoTextArticle(false)" (mouseover)="showInfoTextArticle(true)" class="cursor-pointer relative  hover:underline"> Artikelvorschau</h6>
-        <span> {{article.name}}
-        </span>
+     
 
         <div *ngIf="showArticleView"  class="border-solid border border-black absolute bottom-[25px] flex bg-[#f0f8ff] rounded-[40px]  w-[215px] h-[50px]" >
-            <span class="text-center "> hier stieht du die Artikel die eingeplant sind</span>
+            <span class="text-center"> hier stieht du die Artikel die eingeplant sind</span>
         </div>
-
-
     </div>
+
+
+    <div class="relative flex justify-center">
+        <h6 (click)="openDialogCustomerView()" (mouseleave)="showInfoTextCustomer(false)" (mouseover)="showInfoTextCustomer(true)"   class="cursor-pointer relative  hover:underline"> Kundenvorschau</h6>
+    
+
+        <div *ngIf="showCustomer"  class="border-solid border border-black absolute bottom-[25px] flex bg-[#f0f8ff] rounded-[40px] h-[50px]" >
+            <span class="flex justify-center items-center text-center"> hier stieht der Kunde</span>
+        </div>    
+    </div>
+  
 
 </section>
