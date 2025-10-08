@@ -66,7 +66,8 @@ toArray(result: any) {
     id: result.id,
     time: result.time,
     tourcode: result.tourcode,
-    article: result.article
+    article: result.article,
+    customer: result.customer
   }];
 }
 

@@ -78,6 +78,13 @@ constructor(public dialogRef: MatDialogRef<SelectNewTourWindowComponent>, @Injec
 
   }
 
+
+
+  addnewCustomer(customer: customer) {
+    this.customer.splice(0,1)
+    this.customer.push(customer)
+  }
+
 getnewId(){
     console.log(`drop-${this.tourcode}-${this.time}`);
     const newTime = Number(this.time.split(':')[0]);
@@ -109,7 +116,8 @@ changeNewTour(event:Event) {
       article: this.article,
       id: this.id,
       oldId: this.data.oldid,
-      firestoreId:this.data.firestoreId
+      firestoreId:this.data.firestoreId,
+      customer: this.customer
     });
 
 }

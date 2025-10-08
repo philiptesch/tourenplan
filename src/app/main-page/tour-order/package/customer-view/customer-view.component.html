@@ -1,16 +1,20 @@
 <h1 class="flex justify-center font-bold underline text-[24px] p-[10px] sticky top-0 z-20">
-  Tour {{ newTourId }}
+  Tour {{ tourId }}
 </h1>
 
 <div>
   <h4 class="mt-[20px] text-[20px] text-center sticky top-0 z-20">
-    Artikel-Liste
+    Kunde
 </h4>
 
   <ul class="space-y-4 max-h-[400px]  overflow-y-auto">
     <li *ngFor="let item of customer" 
         class="bg-white shadow-md rounded-lg p-4">
-      <h2>{{ item.name }}</h2>
+      <h2> <b>Kunde:</b> {{ item.name }}</h2>
+      <h2><b>Adresse:</b>  {{ item.address }}</h2>
+      <h2><b>Stadt:</b> {{ item.city }}  {{ item.postalCode }} </h2>
+      <h4><b>Telefon-Nummer:</b> <br> {{ item.phone }}</h4>
+      <h4><b>Lieferhinweis:</b> <br> {{ item.deliveryNote }}</h4>
     </li>
   </ul>
 </div>

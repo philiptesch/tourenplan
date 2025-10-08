@@ -92,14 +92,14 @@
      w-[61%] border-[#031d34f5] h-[250px] overflow-y-auto">  
 
         <ng-container *ngIf="inputCustomer.value.length === 0">
-        <div *ngFor="let customer of customerList">
+        <div (click)="addnewCustomer(customer)" *ngFor="let customer of customerList">
         <span [ngClass]="{'backgroundHover': filteredCustomerList(customer)}"  class="cursor-pointer" >{{customer.name}}, {{customer.city}} </span>
       </div>
       </ng-container>
 
 
         <ng-container *ngIf="inputCustomer.value.length >= 2">
-        <div *ngFor="let customer of newCustomerList">
+        <div (click)="addnewCustomer(customer)" *ngFor="let customer of newCustomerList">
         <span [ngClass]="{'backgroundHover': filteredCustomerList(customer)}"  class="cursor-pointer" >{{customer.name}}, {{customer.city}} </span>
       </div>
       </ng-container>
