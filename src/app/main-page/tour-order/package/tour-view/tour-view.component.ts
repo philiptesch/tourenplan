@@ -7,7 +7,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Article } from '../../../../interfaces/article.interface'
 import { Tour } from '../../../../interfaces/tour.interface';
-
+import { customer } from '../../../../interfaces/customer.interface';
 @Component({
   selector: 'app-tour-view',
   standalone: true,
@@ -21,18 +21,24 @@ export class TourViewComponent implements OnInit {
 totalWeight: number = 0
 tourBeginTime!: String
 tourEndTime!: String
+customerInfo!: customer
   constructor() {
   }
 
   ngOnInit(): void {
   this.calculateTotalWeight();
   this.representTime();
-    
+  this.showCustomerInfo()  
   }
 
     onClose() {
     this.close.emit();
   }
+
+  showCustomerInfo() {
+    this.customerInfo = this.tour.customer[0]
+  }
+
 
 
   calculateTotalWeight() {

@@ -22,7 +22,7 @@
     <!-- LKW-Zeilen -->
     <div *ngFor="let lkw of lkws" class="flex">
       <!-- Linke feste LKW-Spalte -->
-      <div class="w-[105px] flex items-center justify-center flex-col h-[180px] bg-[#031d34f5] border-b shrink-0">
+      <div class="w-[105px] flex items-center justify-center flex-col h-[250px] bg-[#031d34f5] border-b shrink-0">
         <h4>{{lkw}}</h4>
         <h4>(Kranfahrzeug)</h4>
       </div>
@@ -35,7 +35,7 @@
              [cdkDropListData]="showNewTour(lkw, hour)"
              [cdkDropListConnectedTo]="allDropLists"
              (cdkDropListDropped)="drop($event, lkw, hour)"
-             class="bg-[#00ffbb] w-[200px] h-[180px] border-b flex items-center justify-center shrink-0">
+             class="bg-[#00ffbb] w-[200px] h-[250px] border-b flex items-center justify-center shrink-0">
 
           <!-- Pakete / Drag & Drop -->
           <div *ngFor="let tour of showNewTour(lkw, hour)" cdkDrag class="w-full h-full">
