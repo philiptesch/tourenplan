@@ -1,13 +1,29 @@
-<main class="flex items-center w-full h-full justify-center">
+<section class="main-page flex items-center justify-center">
+  <section class="flex flex-col items-center bg-[rgba(255,255,255,0.1)] p-[25px] border-2 border-white shadow-[0_8px_32px_rgba(0,0,0,0.105)] rounded-[30px] w-[500px] h-[500px]">
+    <img src="assets/img/user.png" alt="User Icon" class="h-[160px] mb-[10px]">
 
+    <form  class="flex flex-col items-center gap-[25px] w-full">
 
-    <section class="bg-[#BCC6CF] rounded-[30px] w-[500px] h-[500px]">
+      <div class="w-[290px] border-b-2 border-white flex items-center">
+        <mat-icon class="text-white">mail</mat-icon>
+        <input formControlName="email" type="text" placeholder="Email oder Benutzername" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
+      </div>
 
+  
+      <div class="w-[290px] border-b-2 border-white flex items-center mt-[20px]">
+        <mat-icon class="text-white">lock</mat-icon>
+        <input formControlName="password" type="password" placeholder="Passwort" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
+      </div>
 
+  
+      <div class="flex justify-between w-full px-[90px] mt-[20px]">
+        <input type="checkbox" formControlName="remember" class="accent-white">
+        <span class="text-white cursor-pointer">Passwort vergessen?</span>
+      </div>
 
-    </section>
-
-
-
-
-</main>
+      <button type="submit" class="mt-[20px] w-[50%] bg-[#4549AA] text-white py-[10px] rounded-[30px] border-2 border-white">
+        Login
+      </button>
+    </form>
+  </section>
+</section>
