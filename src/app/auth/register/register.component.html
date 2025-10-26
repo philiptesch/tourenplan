@@ -1,1 +1,66 @@
-<p>register works!</p>
+<section class="main-page flex-col flex items-center justify-center">
+
+<h1 class="text-white text-[45px]">Kunde erstellen</h1>
+  <section class="flex flex-col items-center bg-[rgba(255,255,255,0.1)] p-[25px] border-2 border-white shadow-[0_8px_32px_rgba(0,0,0,0.105)] rounded-[30px] w-[500px] h-[850pxpx]">
+    <img src="assets/img/user.png" alt="User Icon" class="h-[160px] mb-[10px]">
+
+    <form  class="flex flex-col items-center gap-[25px] w-full">
+
+
+      <div class="w-[290px] border-b-2 border-white flex items-center">
+        <mat-icon class="text-white">person</mat-icon>
+        <input formControlName="email" type="text" placeholder="Benutzername" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
+      </div>  
+
+      <div class="w-[290px] border-b-2 border-white flex items-center">
+        <mat-icon class="text-white">mail</mat-icon>
+        <input formControlName="email" type="text" placeholder="Email" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
+      </div>
+
+
+      <div class="w-[290px] border-b-2 border-white flex items-center">
+        <mat-icon class="text-white">location_on</mat-icon>
+        <input formControlName="email" type="text" placeholder="Adresse" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
+      </div>
+
+      <div class="flex gap-[25px]">
+
+        <div class="border-b-2 border-white flex items-center w-[100px]">
+        <input formControlName="email" type="text" placeholder="Postleitzahl" class="bg-transparent flex-1 text-white outline-none py-2">
+        </div>
+
+        <div class="border-b-2 border-white flex items-center">
+        <input formControlName="email" type="text" placeholder="Stadt" class="bg-transparent  flex-1 text-white outline-none py-2">
+        </div>
+      </div>
+
+
+      <div class="w-[290px] border-b-2 border-white flex items-center">
+        <mat-icon class="text-white">phone_in_talk</mat-icon>
+        <input formControlName="email" type="text" placeholder="Telefonnummer" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
+      </div>
+
+
+         <div class="w-[290px] border-b-2 border-white flex items-center">
+        <mat-icon class="text-white">airport_shuttle</mat-icon>
+        <input formControlName="email" type="text" placeholder="Lieferhinweis" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
+      </div>
+
+  
+      <div class="w-[290px] border-b-2 border-white flex items-center mt-[20px]">
+        <mat-icon class="text-white">lock</mat-icon>
+        <input formControlName="password" type="password" placeholder="Passwort" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
+
+
+
+      </div>
+
+
+
+      <button type="submit" class="mt-[20px] w-[50%] bg-[#4549AA] text-white py-[10px] rounded-[30px] border-2 border-white">
+        Registrieren
+      </button>
+    </form>
+  </section>
+</section>
+
