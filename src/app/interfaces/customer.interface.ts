@@ -6,4 +6,5 @@ export interface customer  {
   city: string,
   phone: string,
   deliveryNote: string
+  password: string
 };
