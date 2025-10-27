@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -8,5 +9,13 @@ import {MatIconModule} from '@angular/material/icon';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+   private router = inject(Router);
 
+  constructor() { }
+
+
+
+  goToSignUp() { 
+this.router.navigate(['/signUp']);
+  }
 }

@@ -5,11 +5,9 @@
 
 
 body {
-    width: 99vw;
-    display: flex;
+    width: 100%;
     margin: 0;
-    justify-content: center;
-
+    overflow: hidden;
 
 @media (max-width: 1800px) {
   justify-content: start;
