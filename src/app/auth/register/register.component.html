@@ -4,33 +4,33 @@
   <section class="flex flex-col items-center bg-[rgba(255,255,255,0.1)] p-[25px] border-2 border-white shadow-[0_8px_32px_rgba(0,0,0,0.105)] rounded-[30px] w-[500px] h-[850pxpx]">
     <img src="assets/img/user.png" alt="User Icon" class="h-[160px] mb-[10px]">
 
-    <form (ngSubmit)="addnewUser($event)"class="flex flex-col items-center gap-[25px] w-full">
+    <form [(ngModel)]="newCustomer" (ngSubmit)="addnewUser($event)"class="flex flex-col items-center gap-[25px] w-full">
 
 
       <div class="w-[290px] border-b-2 border-white flex items-center">
         <mat-icon class="text-white">person</mat-icon>
-        <input name="name" type="text" placeholder="Benutzername" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
+        <input name="name" [(ngModel)]="newCustomer.name" type="text" placeholder="Benutzername" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
       </div>  
 
       <div class="w-[290px] border-b-2 border-white flex items-center">
         <mat-icon class="text-white">mail</mat-icon>
-        <input name="customer" type="email" placeholder="Email" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
+        <input [(ngModel)]="newCustomer.email" name="customer" type="email" placeholder="Email" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
       </div>
 
 
       <div class="w-[290px] border-b-2 border-white flex items-center">
         <mat-icon class="text-white">location_on</mat-icon>
-        <input name="address" type="adress" placeholder="Adresse" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
+        <input [(ngModel)]="newCustomer.address" name="address" type="adress" placeholder="Adresse" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
       </div>
 
       <div class="flex gap-[25px]">
 
         <div class="border-b-2 border-white flex items-center w-[100px]">
-        <input name="postalCode" attern="^[0-9]{5}$" type="text" placeholder="Postleitzahl" class="bg-transparent flex-1 text-white outline-none py-2">
+        <input [(ngModel)]="newCustomer.postalCode" name="postalCode" attern="^[0-9]{5}$" type="text" placeholder="Postleitzahl" class="bg-transparent flex-1 text-white outline-none py-2">
         </div>
 
         <div class="border-b-2 border-white flex items-center">
-        <input name="city" type="text" placeholder="Stadt" class="bg-transparent  flex-1 text-white outline-none py-2">
+        <input [(ngModel)]="newCustomer.city" name="city" type="text" placeholder="Stadt" class="bg-transparent  flex-1 text-white outline-none py-2">
         </div>
       </div>
 
@@ -38,19 +38,19 @@
       <div class="w-[290px] border-b-2 border-white flex items-center">
         <mat-icon class="text-white mr-[10px]">phone_in_talk</mat-icon>
          <input type="text" value="+49" readonly class="bg-transparent text-white outline-none w-[40px]"/>
-        <input  name="phone" type="tel" placeholder="Telefonnummer" class="bg-transparent   flex-1 text-white outline-none py-2">
+        <input [(ngModel)]="newCustomer.phone"  name="phone" type="tel" placeholder="Telefonnummer" class="bg-transparent   flex-1 text-white outline-none py-2">
       </div>
 
 
          <div class="w-[290px] border-b-2 border-white flex items-center">
         <mat-icon class="text-white">airport_shuttle</mat-icon>
-        <input name="deliveryNote" type="text" placeholder="Lieferhinweis" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
+        <input [(ngModel)]="newCustomer.deliveryNote" name="deliveryNote" type="text" placeholder="Lieferhinweis" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
       </div>
 
   
       <div class="w-[290px] border-b-2 border-white flex items-center mt-[20px]">
         <mat-icon class="text-white">lock</mat-icon>
-        <input name="password" type="password" placeholder="Passwort" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
+        <input [(ngModel)]="newCustomer.password" name="password" type="password" placeholder="Passwort" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
 
 
 

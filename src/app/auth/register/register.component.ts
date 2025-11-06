@@ -4,10 +4,12 @@ import { getAuth, deleteUser, onAuthStateChanged, confirmPasswordReset, createUs
 import { Firestore, deleteDoc, collection, addDoc, getDoc, doc, updateDoc, setDoc, query, where, getDocs, onSnapshot, arrayUnion } from '@angular/fire/firestore';
 import { AuthRegisterService } from '../../services/auth-register.service';
 import { customer } from '../../interfaces/customer.interface';
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [MatIconModule, FormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
@@ -22,6 +24,7 @@ export class RegisterComponent {
   deliveryNote: string = ''
   password: string = ''
   id: string = ''
+  email: string = ''
 
   newCustomer: customer = {
   id: this.id ,
@@ -31,15 +34,16 @@ export class RegisterComponent {
   city: this.city ,
   phone:  this.phone,
   deliveryNote:  this.deliveryNote,
-  password:  this.password
-
+  password:  this.password,
+  email:  this.email 
   }
 
 
   constructor() { }
 
   addnewUser(event: Event) {
-
+    console.log('customer', this.newCustomer);
+    
   }
 
 }

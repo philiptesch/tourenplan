@@ -26,7 +26,10 @@ newCustomerList!: customer[]
 constructor(public dialogRef: MatDialogRef<SelectNewTourWindowComponent>, @Inject(MAT_DIALOG_DATA) public data: { article: Article[]; time: number, tourcode: number, oldid:string, customerList: customer[], customer: customer[]
   firestoreId:string  
  
- },  private firstoreServie: FirestoreServiceService) { 
+ },  private firstoreServie: FirestoreServiceService)
+ 
+ 
+ { 
    this.time = this.data.time.toString().padStart(2, '0') + ':00'; // z.B. 14 -> "14:00"
    this.article = this.data.article;
    this.tourcode = this.data.tourcode;

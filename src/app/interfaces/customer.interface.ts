@@ -5,6 +5,7 @@ export interface customer  {
   postalCode: string,
   city: string,
   phone: string,
-  deliveryNote: string
-  password: string
+  deliveryNote: string,
+  password: string,
+  email: string
 };
