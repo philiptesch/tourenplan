@@ -4,3 +4,34 @@
     background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
     margin: 0;
 }
+
+.animation-slide-headline {
+  overflow: hidden;
+  position: relative;// sorgt dafür, dass der Text außerhalb nicht sichtbar ist
+  width: 400px;
+}
+
+.animatedSlider {
+  animation: slide-in 1s ease-out forwards;
+  position: absolute;
+  top: 0;
+  left: 0; 
+}
+
+.finalSlider {
+  animation: none !important;
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+}
+
+// Keyframes für das Einfliegen von links nach rechts
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%); // START links außerhalb
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);     // ENDE an normaler Position
+    opacity: 1;
+  }
+}

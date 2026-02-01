@@ -20,13 +20,13 @@
 
       <div class="w-[290px] border-b-2 border-white flex items-center">
         <mat-icon class="text-white">location_on</mat-icon>
-        <input [(ngModel)]="newCustomer.address" name="address" type="adress" placeholder="Adresse" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
+        <input [(ngModel)]="newCustomer.adress" name="adress" type="adress" placeholder="Adresse" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
       </div>
 
       <div class="flex gap-[25px]">
 
         <div class="border-b-2 border-white flex items-center w-[100px]">
-        <input [(ngModel)]="newCustomer.postalCode" name="postalCode" attern="^[0-9]{5}$" type="text" placeholder="Postleitzahl" class="bg-transparent flex-1 text-white outline-none py-2">
+        <input [(ngModel)]="newCustomer.postalCode" name="postalCode" attern="^[0-9]{5}$" type="tel" placeholder="Postleitzahl" class="bg-transparent flex-1 text-white outline-none py-2">
         </div>
 
         <div class="border-b-2 border-white flex items-center">
@@ -63,5 +63,12 @@
       </button>
     </form>
   </section>
+
+<div class="animation-slide-headline">
+  <h3 class="animatedSlider">
+    Fehler: User existiert bereits
+  </h3>
+</div>
+  
 </section>
 

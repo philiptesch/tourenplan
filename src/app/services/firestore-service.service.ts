@@ -1,13 +1,15 @@
 import { Injectable, inject  } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { Firestore, collectionData, collection,addDoc, onSnapshot, updateDoc, doc } from '@angular/fire/firestore';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { Firestore, collectionData, collection,addDoc, onSnapshot, updateDoc, doc, query, where, getDocs } from '@angular/fire/firestore';
 import articles from '../services/article.json';
 import  customerJSON from '../services/customerJSON.json';
 import { customer } from '../interfaces/customer.interface';
 import { BehaviorSubject, timestamp } from 'rxjs';
 import { Article } from '../interfaces/article.interface';
 import { Tour } from '../interfaces/tour.interface';
+import { User } from '../interfaces/user.inferface';
 import { log } from 'node:console';
 @Injectable({
   providedIn: 'root'
@@ -27,6 +29,8 @@ export class FirestoreServiceService {
     articlesId!:string
     tour: Tour[] = []
     new: any = []
+    user: User[] = []
+    private auth = getAuth();
   constructor() {
     this.subList()
     this.subListTouren()
@@ -70,12 +74,86 @@ subListCusteromer() {
     console.log('customerArray',customerArray);
     
     this.customerSubject.next(customerArray)
-
+    this.getOngoingId()
 
 });
 
+
+
   
 }
+
+async registerNewUser(newUser: User ) {
+  
+  if (newUser) {
+    createUserWithEmailAndPassword(this.auth, newUser.email, newUser.email)
+      .then(async (userCredential) => {
+    const user = userCredential.user;
+    await this.addNewUserInFirebase(newUser)
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    console.log(errorCode);
+  });
+
+  }
+}
+
+
+
+
+async addNewUserInFirebase(user: User) {
+  
+const docRef = await addDoc(this.getCustomerRef(), this.userJSON(user));
+const maxId = this.getOngoingId()
+//const q = query(this.getCustomerRef(), where("name", "==", user.name));
+
+//const querySnapshot = await getDocs(q);
+//querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  //console.log(doc.id, " => ", doc.data()); });
+
+console.log(docRef);
+try {
+    if (docRef.id) {
+      await updateDoc(docRef, {
+        fireStoreId: docRef.id,
+        id: maxId +1
+});
+    }
+  
+} catch (error) {
+  
+}
+
+}
+
+getOngoingId() {
+let arr = this.customerSubject.getValue().map(c => Number(c.id));
+let  maxNumber = Math.max(...arr);
+return maxNumber
+
+  
+}
+
+
+
+userJSON(user:User) {
+  return {
+  id: null,
+  name: user.name,
+  adress: user.adress,
+  postalCode: user.postalCode,
+  city: user.city,
+  phone: user.phone,
+  deliveryNote: user.deliveryNote
+};
+}
+
+
+
+
+
 
 customerJSON(data: any, id:any) {
   return {
