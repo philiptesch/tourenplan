@@ -26,5 +26,5 @@ jobs:
         username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: dist/
-        server-dir: ./tourenplan/
+        server-dir: /tourenplan/
         timeout: 190000
