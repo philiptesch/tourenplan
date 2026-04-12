@@ -23,6 +23,6 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.3.1
       with:
         server: philip-tesch.developerakademie.net
-        username: ${{ f0160d35 }}
-        password: ${{ Q4uRl2iF }}
-        local-dir: dist/cicdtest/
+        username: ${{ secrets.ftp_user }}
+        password: ${{ secrets.ftp_password }}
+        local-dir: dist/
