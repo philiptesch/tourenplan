@@ -16,12 +16,12 @@ jobs:
     - name: Install and build
       run: |
         npm i
-        npm run build -- --base-href=/tourenplan/
+        npm run build -- --base-href=/tourenplan/tourenplan
 
     - name: Run tests
       run: |
         npm run test -- --watch=false --browsers=ChromeHeadless
-
+            
 
 
     - name: 📂 Sync files
@@ -31,5 +31,5 @@ jobs:
         username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: dist/
-        server-dir: /tourenplan/
+        server-dir: /tourenplan/tourenplan
         timeout: 190000
