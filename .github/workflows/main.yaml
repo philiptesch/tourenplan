@@ -28,6 +28,6 @@ jobs:
         server: philip-tesch.developerakademie.net
         username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
-         local-dir: dist/tourenplan/browser/
+        local-dir: dist/tourenplan/browser/
         server-dir: /tourenplan/
         timeout: 190000
