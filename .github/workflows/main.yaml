@@ -16,7 +16,7 @@ jobs:
     - name: Install and build
       run: |
         npm i
-        npm run build -- --base-href=/tourenplan/tourenplan
+        npm run build -- --base-href=/tourenplan/tourenplan/
 
    
             
@@ -29,5 +29,5 @@ jobs:
         username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: dist/
-        server-dir: /tourenplan/tourenplan
+        server-dir: /tourenplan/tourenplan/
         timeout: 190000
