@@ -54,7 +54,7 @@ export class RegisterComponent {
   }
 
 
-  constructor(private authService : FirestoreServiceService ) {
+  constructor(public  authService : FirestoreServiceService ) {
 
 
    }

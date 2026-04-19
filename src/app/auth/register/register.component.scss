@@ -1,14 +1,12 @@
 .main-page {
-    width: 100vw;
-    height: 100vh; 
+    width: 100%;
+    height: 100%; 
     background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
     margin: 0;
 }
 
 .animation-slide-headline {
-  overflow: hidden;
   position: relative;// sorgt dafür, dass der Text außerhalb nicht sichtbar ist
-  width: 400px;
 }
 
 .animatedSlider {

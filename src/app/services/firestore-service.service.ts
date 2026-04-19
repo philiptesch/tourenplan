@@ -1,4 +1,4 @@
-import { Injectable, inject  } from '@angular/core';
+import { Injectable, inject, signal  } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -30,6 +30,7 @@ export class FirestoreServiceService {
     tour: Tour[] = []
     new: any = []
     user: User[] = []
+    userInUse = signal(false)
     private auth = getAuth();
   constructor() {
     this.subList()
@@ -88,10 +89,13 @@ async registerNewUser(newUser: User ) {
   if (newUser) {
     createUserWithEmailAndPassword(this.auth, newUser.email, newUser.email)
       .then(async (userCredential) => {
+        this.userInUse.set(false);
     const user = userCredential.user;
     await this.addNewUserInFirebase(newUser)
   })
   .catch((error) => {
+    console.log('fehler');
+    this.userInUse.set(true);
     const errorCode = error.code;
     console.log(errorCode);
   });

@@ -3,28 +3,23 @@
 @tailwind components;
 @tailwind utilities;
 
-
-body {
-    width: 100%;
-    margin: 0;
-    overflow: hidden;
-
-@media (max-width: 1800px) {
-  justify-content: start;
+html, body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-}
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
- .mdc-dialog__container {
+.mdc-dialog__container {
     position: absolute !important;
     top: 40px !important;
     left: 40% !important;
     height: 400px !important;
     width: 400px !important;
 }
-
-
 
 .custom-dialog-2 .mdc-dialog__container {
     position: absolute !important;
@@ -36,7 +31,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .custom-dialog-2 .mdc-dialog__surface {
   padding: 20px !important;
 }
-
 
 .custom-dialog-2 .mdc-dialog__surface {
   scrollbar-color: #031d34f5 white;
