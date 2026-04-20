@@ -1,4 +1,4 @@
-import { ApplicationConfig } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, ErrorHandler } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -7,7 +7,23 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-
+import { Router } from '@angular/router';
+import * as Sentry from "@sentry/angular";
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideClientHydration(), provideAnimationsAsync(), provideFirebaseApp(() => initializeApp({"projectId":"tourenplan-6d4ae","appId":"1:619354557814:web:3f6b83b6d088ebeb5a3e57","storageBucket":"tourenplan-6d4ae.firebasestorage.app","apiKey":"AIzaSyAfOaj-ihalZHR_ZavxOvvmo0Swe1WEnxs","authDomain":"tourenplan-6d4ae.firebaseapp.com","messagingSenderId":"619354557814"})), provideAuth(() => getAuth()), provideFirestore(() => getFirestore())]
+  providers: [provideRouter(routes), provideClientHydration(), provideAnimationsAsync(), provideFirebaseApp(() => initializeApp({"projectId":"tourenplan-6d4ae","appId":"1:619354557814:web:3f6b83b6d088ebeb5a3e57","storageBucket":"tourenplan-6d4ae.firebasestorage.app","apiKey":"AIzaSyAfOaj-ihalZHR_ZavxOvvmo0Swe1WEnxs","authDomain":"tourenplan-6d4ae.firebaseapp.com","messagingSenderId":"619354557814"})), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()),
+     {
+      provide: ErrorHandler,
+      useValue: Sentry.createErrorHandler(),
+    },
+    {
+      provide: Sentry.TraceService,
+      deps: [Router],
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: () => () => {},
+      deps: [Sentry.TraceService],
+      multi: true,
+    },
+  ]
 };

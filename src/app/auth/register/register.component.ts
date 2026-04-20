@@ -80,4 +80,11 @@ checkUserIsInUse(newUser: User ) {
     this.UserIsAlReadyInUse = false
 }
 
+
+
+ public throwTestError(): void {
+    throw new Error("Sentry Test Error");
+  }
+
+
 }
