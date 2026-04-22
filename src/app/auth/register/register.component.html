@@ -4,12 +4,12 @@
   <section class="flex flex-col items-center bg-[rgba(255,255,255,0.1)] p-[25px] border-2 border-white shadow-[0_8px_32px_rgba(0,0,0,0.105)] rounded-[30px] w-[500px] h-[850pxpx]">
     <img src="assets/img/user.png" alt="User Icon" class="h-[160px] mb-[10px]">
 
-    <form [(ngModel)]="newCustomer" (ngSubmit)="addnewUser($event)"class="flex flex-col items-center gap-[25px] w-full">
+    <form #form="ngForm" (ngSubmit)="addnewUser($event)"class="flex flex-col items-center gap-[25px] w-full">
 
 
       <div class="max-w-[290px] border-b-2 border-white flex items-center">
         <mat-icon class="text-white">person</mat-icon>
-        <input name="name" [(ngModel)]="newCustomer.name" type="text" placeholder="Benutzername" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
+        <input  [(ngModel)]="newCustomer.name" name="name" type="text" placeholder="Benutzername" class="bg-transparent ml-[20px] flex-1 text-white outline-none py-2">
       </div>  
 
       <div class="max-w-[290px] border-b-2 border-white flex items-center">
@@ -26,7 +26,7 @@
       <div class="flex gap-[25px]">
 
         <div class="border-b-2 border-white flex items-center w-[100px]">
-        <input [(ngModel)]="newCustomer.postalCode" name="postalCode" attern="^[0-9]{5}$" type="tel" placeholder="Postleitzahl" class="bg-transparent flex-1 text-white outline-none py-2">
+        <input [(ngModel)]="newCustomer.postalCode" name="postalCode" pattern="^[0-9]{5}$" type="tel" placeholder="Postleitzahl" class="bg-transparent flex-1 text-white outline-none py-2">
         </div>
 
         <div class="border-b-2 border-white flex items-center">
@@ -67,8 +67,8 @@
 
   </section>
 
-<div ngClass="" class="animation-slide-headline">
-  <h3 class="animatedSlider">
+<div  class="animation-slide-headline">
+  <h3  [ngClass]="{'animatedSlider': authService.userInUse(),'hidden': !authService.userInUse()}">
     Fehler: User existiert bereits
   </h3>
 </div>

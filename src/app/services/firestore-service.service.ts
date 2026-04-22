@@ -96,6 +96,8 @@ async registerNewUser(newUser: User ) {
   .catch((error) => {
     console.log('fehler');
     this.userInUse.set(true);
+    console.log('this.userInUse.set(true);', this.userInUse);
+    
     const errorCode = error.code;
     console.log(errorCode);
   });
