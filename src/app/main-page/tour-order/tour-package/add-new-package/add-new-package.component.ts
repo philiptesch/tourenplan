@@ -122,7 +122,7 @@ checkCustomerInput(event:Event) {
 
 
 selectCustomer(customer:any) {
-  this.checkCustomer = this.customerList.filter(cust => cust.name === customer.name)
+  this.checkCustomer = this.customerList.filter(cust => cust.name === customer.name && cust.id === customer.id)
   console.log('checkCustomer', this.checkCustomer);
   
 
@@ -130,7 +130,7 @@ selectCustomer(customer:any) {
 
 
 selectedCustomer(customer:any) {
-  return this.checkCustomer.some(cust => cust.name === customer.name)
+  return this.checkCustomer.some(cust => cust.name === customer.name && cust.id === customer.id)
 }
 
 
