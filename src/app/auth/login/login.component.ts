@@ -1,6 +1,9 @@
 import { Component, inject } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import { Router } from '@angular/router';
+import {LogoPageComponent} from from './logo-page/logo-page.component';
+
+
 @Component({
   selector: 'app-login',
   standalone: true,

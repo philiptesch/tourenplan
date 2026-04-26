@@ -1,0 +1,91 @@
+.main-page {
+    width: 100vw;
+    height: 100vh; 
+    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.logoImage {
+    width: 500px;
+    height: auto;
+    border-radius: 140px;
+    animation: smallImage 500ms ease-in-out 1.6s normal forwards;
+}
+
+
+.logo-main-page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    animation: move-to-corner 1.2s ease-in-out 1.6s forwards;
+}
+.headline-wrapper {
+    overflow: hidden;
+}
+
+
+.headline {
+font-size: 70px;
+font-weight: bolder;
+animation: slideHeadliner 800ms ease-in-out  500ms normal forwards, changefontsize 1.2s ease-in-out 1.6s forwards;
+transform: translateX(-100%);
+}
+
+
+
+
+.logo-headline {
+    transform: translateX(-50%);
+    animation: slideIn 800ms ease-out forwards;
+}
+
+/* Animation */
+@keyframes slideIn {
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideHeadliner {
+    to {
+        transform: translateX(0);
+    }
+}
+
+
+@keyframes move-to-corner {
+    from {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    to {
+        top: 10px;
+        left: 10px;
+        transform: translate(0, 0);
+    }
+}
+
+
+@keyframes smallImage {
+    to {
+        width: 200px;
+    }
+}
+
+
+
+@keyframes changefontsize {
+    to {
+        font-size: 40px;
+    }
+}
