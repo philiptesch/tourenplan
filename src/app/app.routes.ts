@@ -2,14 +2,14 @@ import { Routes } from '@angular/router';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
+import { LogoPageComponent } from './auth-component/logo-page/logo-page.component';
 import { RegisterComponent } from './auth/register/register.component';
 export const routes: Routes = [
 
    {
-    path: 'login',
-    component: LoginComponent,
+    path: 'logo',
+    component: LogoPageComponent,
   },
-   { path: '', redirectTo: '/login', pathMatch: 'full' },
 
      {
     path: 'mainPage',
