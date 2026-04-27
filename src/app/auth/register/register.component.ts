@@ -7,11 +7,12 @@ import { customer } from '../../interfaces/customer.interface';
 import { User } from '../../interfaces/user.inferface';
 import { FormsModule } from '@angular/forms';
 import { FirestoreServiceService } from '../../services/firestore-service.service';
+import { LogoComponent } from './logo/logo.component';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [MatIconModule, FormsModule,CommonModule],
+  imports: [MatIconModule, FormsModule,CommonModule, LogoComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
