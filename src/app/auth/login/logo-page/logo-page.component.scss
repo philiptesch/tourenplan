@@ -3,7 +3,6 @@
     left: 0;
     right: 0;
     top:0;
-    botttom:0;
     background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
     margin: 0;
     display: flex;
@@ -32,7 +31,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    justify-content: center;
+    transform: translate(-50%, -50%, );
     display: flex;
     align-items: center;
     gap: 20px;
@@ -54,7 +54,7 @@ transform: translateX(-100%);
 
 
 .logo-headline {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
     animation: slideIn 800ms ease-in-out forwards;
 }
 
@@ -76,12 +76,14 @@ transform: translateX(-100%);
     from {
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%, );
     }
     to {
-        top: 10px;
-        left: 10px;
+        top:0;
+        left: 0;
+        padding: 20px;
         transform: translate(0, 0);
+        justify-content: flex-start;
     }
 }
 

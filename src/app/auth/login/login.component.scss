@@ -9,3 +9,20 @@ header {
       background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
   
 }
+
+.showLoginPageStyle {
+  opacity: 0;
+  animation: opacitySlideIn 850ms ease-in forwards;
+}
+
+
+@keyframes opacitySlideIn {
+  from {
+    opacity: 0;
+      transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+      transform: translateY(0);
+  }
+}
